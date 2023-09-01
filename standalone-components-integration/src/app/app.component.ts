@@ -10,7 +10,7 @@ import { getRandom } from 'src/utils/get-random';
 })
 export class AppComponent {
   constructor(private monitoringService: MonitoringService) {
-    const mutate = this.monitoringService.monitoring.mutate;
+    const mutate = this.monitoringService.notifications.mutate;
 
     setInterval(() => {
       mutate((value) => (value.altitude = getRandom()));

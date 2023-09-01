@@ -11,7 +11,7 @@ import { getRandom } from 'src/utils/get-random';
 
 type Status = RuxStatus['status'];
 
-interface Monitoring {
+interface Notifications {
   altitude: number;
   equipment: number;
   thermal: number;
@@ -21,22 +21,22 @@ interface Monitoring {
   providedIn: 'root',
 })
 export class MonitoringService {
-  public monitoring: WritableSignal<Monitoring> = signal({
+  public notifications: WritableSignal<Notifications> = signal({
     altitude: getRandom(),
     equipment: getRandom(),
     thermal: getRandom(),
   });
 
   public altitudeStatus: Signal<Status> = computed(() => {
-    return this.setMonitoringStatus(this.monitoring().altitude);
+    return this.setMonitoringStatus(this.notifications().altitude);
   });
 
   public equipmentStatus: Signal<Status> = computed(() => {
-    return this.setMonitoringStatus(this.monitoring().equipment);
+    return this.setMonitoringStatus(this.notifications().equipment);
   });
 
   public thermalStatus: Signal<Status> = computed(() => {
-    return this.setMonitoringStatus(this.monitoring().thermal);
+    return this.setMonitoringStatus(this.notifications().thermal);
   });
 
   private setMonitoringStatus(notifications: number): Status {

@@ -21,19 +21,19 @@ import { MonitoringService } from '../monitoring.service';
           icon="altitude"
           label="Altitude"
           [status]="monitoringService.altitudeStatus()"
-          [notifications]="monitoringService.monitoring().altitude"
+          [notifications]="monitoringService.notifications().altitude"
         ></rux-monitoring-icon>
         <rux-monitoring-icon
           icon="equipment"
           label="Equipment"
           [status]="monitoringService.equipmentStatus()"
-          [notifications]="monitoringService.monitoring().equipment"
+          [notifications]="monitoringService.notifications().equipment"
         ></rux-monitoring-icon>
         <rux-monitoring-icon
           icon="thermal"
           label="Thermal"
           [status]="monitoringService.thermalStatus()"
-          [notifications]="monitoringService.monitoring().thermal"
+          [notifications]="monitoringService.notifications().thermal"
         ></rux-monitoring-icon>
       </div>
     </rux-global-status-bar>
