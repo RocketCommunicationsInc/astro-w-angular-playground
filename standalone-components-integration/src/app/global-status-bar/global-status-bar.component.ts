@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AstroComponentsModule } from '@astrouxds/angular';
 
+import { MonitoringService } from '../monitoring.service';
+
 @Component({
   selector: 'app-global-status-bar',
   standalone: true,
@@ -17,21 +19,21 @@ import { AstroComponentsModule } from '@astrouxds/angular';
       <div slot="right-side">
         <rux-monitoring-icon
           icon="altitude"
-          label="Monitoring"
-          status="normal"
-          notifications="999"
+          label="Altitude"
+          [status]="monitoringService.altitudeStatus()"
+          [notifications]="monitoringService.monitoring().altitude"
         ></rux-monitoring-icon>
         <rux-monitoring-icon
-          icon="altitude"
-          label="Monitoring"
-          status="normal"
-          notifications="1500"
+          icon="equipment"
+          label="Equipment"
+          [status]="monitoringService.equipmentStatus()"
+          [notifications]="monitoringService.monitoring().equipment"
         ></rux-monitoring-icon>
         <rux-monitoring-icon
-          icon="altitude"
-          label="Monitoring"
-          status="normal"
-          notifications="10000000000"
+          icon="thermal"
+          label="Thermal"
+          [status]="monitoringService.thermalStatus()"
+          [notifications]="monitoringService.monitoring().thermal"
         ></rux-monitoring-icon>
       </div>
     </rux-global-status-bar>
@@ -47,4 +49,6 @@ import { AstroComponentsModule } from '@astrouxds/angular';
     `,
   ],
 })
-export class GlobalStatusBarComponent {}
+export class GlobalStatusBarComponent {
+  constructor(readonly monitoringService: MonitoringService) {}
+}
