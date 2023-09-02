@@ -1,0 +1,12 @@
+services:
+  angular-ui:
+    build:
+      context: standalone-components-integration
+      dockerfile: Dockerfile-dev
+      target: dev
+    ports:
+      - 4201:4201
+    container_name: angular-ui
+    volumes:
+      - ./standalone-components-integration:/opt/app
+      - /opt/app/node_modules
