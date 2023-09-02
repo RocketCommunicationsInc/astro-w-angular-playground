@@ -11,7 +11,7 @@ import { MonitoringService } from '../monitoring.service';
   template: `
     <rux-global-status-bar
       includeIcon
-      appName="Standalone"
+      appName="Docker Dev"
       appDomain="Astro Angular"
       username="Devuser"
     >
