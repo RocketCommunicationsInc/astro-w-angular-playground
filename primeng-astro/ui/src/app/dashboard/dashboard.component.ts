@@ -4,11 +4,14 @@ import { ButtonModule } from 'primeng/button';
 import { Store, select } from '@ngrx/store';
 
 import { logout, selectUserState } from '../auth/state';
+import { CardModule } from 'primeng/card';
+import { TabViewModule } from 'primeng/tabview';
+import { PanelModule } from 'primeng/panel';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, ButtonModule],
+  imports: [CommonModule, ButtonModule, CardModule, TabViewModule, PanelModule],
   templateUrl: './dashboard.component.html',
   styles: [],
 })

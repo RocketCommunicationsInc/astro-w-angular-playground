@@ -13,15 +13,7 @@ import { AppState } from './app.reducer';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    ButtonModule,
-    CardModule,
-    TabViewModule,
-    PanelModule,
-    AuthComponent,
-  ],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
   styles: [],
 })
