@@ -1,3 +1,13 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import { authRoutes } from './auth/auth.routes';
+import { dashboardRoutes } from './dashboard/dashboard.routes';
+
+export const routes: Routes = [
+  ...authRoutes,
+  ...dashboardRoutes,
+  {
+    path: '**',
+    redirectTo: '/login',
+  },
+];

@@ -1,0 +1,4 @@
+<div *ngIf="user$ | async as user">
+  <div>Hey now {{ user.name }}!</div>
+  <p-button (onClick)="logout()">Logout</p-button>
+</div>
