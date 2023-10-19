@@ -1,8 +1,8 @@
 .p-card {
-    background: $panelContentBg;
-    color: $panelContentTextColor;
+    background: var(--color-background-base-default);
     box-shadow: $cardShadow;
-    border-radius: $borderRadius;
+    border-radius: var(--radius-base, 3px);
+    border: 1px solid var(--card-color-border);
 
     .p-card-body {
         padding: $cardBodyPadding;
@@ -21,7 +21,7 @@
     }
 
     .p-card-content {
-        padding: $cardContentPadding;
+        padding: 0;
     }
 
     .p-card-footer {

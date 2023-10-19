@@ -7,13 +7,11 @@
 @mixin focused() {
 	outline: $focusOutline;
     outline-offset: $focusOutlineOffset;
-    box-shadow: $focusShadow;
 }
 
 @mixin focused-inset() {
 	outline: $focusOutline;
     outline-offset: $focusOutlineOffset;
-    box-shadow: inset $focusShadow;
 }
 
 @mixin focused-input() {
@@ -325,7 +323,6 @@
 @mixin focused-inset() {
 	outline: $focusOutline;
     outline-offset: $focusOutlineOffset;
-    box-shadow: inset $focusShadow;
 }
 
 @mixin menuitem-badge {

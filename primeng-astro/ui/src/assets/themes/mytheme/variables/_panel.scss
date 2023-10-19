@@ -264,11 +264,11 @@ $scrollPanelTrackBg: #f8f9fa;
 
 /// Padding of a card body
 /// @group panel
-$cardBodyPadding: 1rem;
+$cardBodyPadding: var(--card-body-padding);
 
 /// Font size of a card title
 /// @group panel
-$cardTitleFontSize: 1.5rem;
+$cardTitleFontSize: var(--font-heading-3-font-size);
 
 /// Font weight of a card title
 /// @group panel
@@ -292,7 +292,7 @@ $cardFooterPadding: 1rem 0 0 0;
 
 /// Box shadow of a card
 /// @group panel
-$cardShadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0,0,0,.12);
+$cardShadow: var(--shadow-overlay, 0px 4px 4px 1px rgba(0, 0, 0, 0.45));
 
 /// Margin of divider in horizontal layout
 /// @group panel

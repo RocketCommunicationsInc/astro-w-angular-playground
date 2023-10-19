@@ -80,19 +80,15 @@ $errorColor: #e4677e;
 
 /// Outline color of a focused element
 /// @group general
-$focusOutlineColor: #bfd1f6;
+$focusOutlineColor: var(--color-border-focus-default);
 
 /// Outline of a focused element
 /// @group general
-$focusOutline: 0 none;
+$focusOutline: 1px solid $focusOutlineColor;
 
 /// Outline offset of a focused element
 /// @group general
-$focusOutlineOffset: 0;
-
-/// Box shadow of a focused element
-/// @group general
-$focusShadow: 0 0 0 0.2rem $focusOutlineColor;
+$focusOutlineOffset: 1px;
 
 /// Width of an action icon
 /// @group general

@@ -12,27 +12,27 @@ $buttonIconOnlyPadding: .5rem 0;
 
 /// Background of a button
 /// @group button
-$buttonBg: $primaryColor;
+$buttonBg: var(--button-color-background-primary-default);
 
 /// Text color of a button
 /// @group button
-$buttonTextColor: $primaryTextColor;
+$buttonTextColor: var(--button-color-text-primary);
 
 /// Border of a button
 /// @group button
-$buttonBorder: 1px solid $primaryColor;
+$buttonBorder: var(--button-border-width) solid var(--button-color-background-primary-default);
 
 /// Background of a button in hover state
 /// @group button
-$buttonHoverBg: $primaryDarkColor;
+$buttonHoverBg: var(--button-color-background-primary-hover);
 
 /// Text color of a button in hover state
 /// @group button
-$buttonTextHoverColor: $primaryTextColor;
+$buttonTextHoverColor: var(--button-color-text-primary);
 
 /// Border color of a button in hover state
 /// @group button
-$buttonHoverBorderColor: $primaryDarkColor;
+$buttonHoverBorderColor: var(--button-color-background-primary-hover);
 
 /// Background of a button in pressed state
 /// @group button
@@ -40,7 +40,7 @@ $buttonActiveBg: $primaryDarkerColor;
 
 /// Color of a button in pressed state
 /// @group button
-$buttonTextActiveColor: $primaryTextColor;
+$buttonTextActiveColor: var(--button-color-text-primary);
 
 /// Border color of a button in pressed state
 /// @group button
@@ -52,7 +52,7 @@ $raisedButtonShadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0
 
 /// Border radius of a rounded button
 /// @group button
-$roundedButtonBorderRadius: 2rem;
+$roundedButtonBorderRadius: var(--button-radius);
 
 /// Alpha level of a text button background in hover state
 /// @group button
@@ -64,7 +64,7 @@ $textButtonActiveBgOpacity:.16;
 
 /// Border style of a outlined button
 /// @group button
-$outlinedButtonBorder:1px solid;
+$outlinedButtonBorder:1px solid var(--button-color-border-secondary-default);
 
 /// Text color of a plain text button
 /// @group button
@@ -80,39 +80,39 @@ $plainButtonActiveBgColor:#dee2e6;
 
 /// Background of a secondary button
 /// @group button
-$secondaryButtonBg: #607D8B;
+$secondaryButtonBg: var(--button-color-background-secondary);
 
 /// Text color of a secondary button
 /// @group button
-$secondaryButtonTextColor: #ffffff;
+$secondaryButtonTextColor: var(--button-color-text-secondary-default);
 
 /// Border of a secondary button
 /// @group button
-$secondaryButtonBorder: 1px solid #607D8B;
+$secondaryButtonBorder: 1px solid var(--button-color-border-secondary-default);
 
 /// Background of a secondary button in hover state
 /// @group button
-$secondaryButtonHoverBg: #546E7A;
+$secondaryButtonHoverBg: var(--button-color-background-secondary);
 
 /// Text color of a secondary button in hover state
 /// @group button
-$secondaryButtonTextHoverColor: #ffffff;
+$secondaryButtonTextHoverColor: var(--button-color-text-secondary-hover);
 
 /// Border color of a secondary button in hover state
 /// @group button
-$secondaryButtonHoverBorderColor: #546E7A;
+$secondaryButtonHoverBorderColor: var(--button-color-border-secondary-hover);
 
 /// Background of a secondary button in pressed state
 /// @group button
-$secondaryButtonActiveBg: #455A64;
+$secondaryButtonActiveBg: var(--button-color-text-secondary-hover);
 
 /// Text color of a secondary button in pressed state
 /// @group button
-$secondaryButtonTextActiveColor: #ffffff;
+$secondaryButtonTextActiveColor: var(--button-color-border-secondary-hover);
 
 /// Border color of a secondary button in pressed state
 /// @group button
-$secondaryButtonActiveBorderColor: #455A64;
+$secondaryButtonActiveBorderColor: var(--button-color-border-secondary-hover);
 
 /// Box shadow of a secondary button in focused state
 /// @group button
@@ -320,11 +320,11 @@ $dangerButtonFocusShadow: 0 0 0 0.2rem lighten($dangerButtonBg, 35%);
 
 /// Text color of a link button
 /// @group button
-$linkButtonColor:$primaryDarkerColor;
+$linkButtonColor: var(--link-color-text-default);
 
 /// Text color of a link button in hover state
 /// @group button
-$linkButtonHoverColor:$primaryDarkerColor;
+$linkButtonHoverColor: var(--link-color-text-hover);
 
 /// Text decoration of a link button in hover state
 /// @group button
@@ -376,11 +376,11 @@ $toggleButtonActiveBorderColor: $primaryColor;
 
 /// Text color of a toggle button in selected state
 /// @group button
-$toggleButtonTextActiveColor: $primaryTextColor;
+$toggleButtonTextActiveColor: var(--button-color-text-primary);
 
 /// Icon color of a toggle button in selected state
 /// @group button
-$toggleButtonIconActiveColor: $primaryTextColor;
+$toggleButtonIconActiveColor: var(--button-color-text-primary);
 
 /// Hover background of a toggle button in selected state
 /// @group button
@@ -392,11 +392,11 @@ $toggleButtonActiveHoverBorderColor: $primaryDarkColor;
 
 /// Hover text color of a toggle button in selected state
 /// @group button
-$toggleButtonTextActiveHoverColor: $primaryTextColor;
+$toggleButtonTextActiveHoverColor: var(--button-color-text-primary);
 
 /// Hover icon of a toggle button in selected state
 /// @group button
-$toggleButtonIconActiveHoverColor: $primaryTextColor;
+$toggleButtonIconActiveHoverColor: var(--button-color-text-primary);
 
 /// Width of a floating action button on speed dial
 /// @group button
