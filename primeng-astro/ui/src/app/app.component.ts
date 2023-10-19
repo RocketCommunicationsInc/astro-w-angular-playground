@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { TabViewModule } from 'primeng/tabview';
+import { PanelModule } from 'primeng/panel';
 
 import { AuthComponent } from './auth/auth.component';
 import { AppState } from './app.reducer';
@@ -10,7 +13,15 @@ import { AppState } from './app.reducer';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ButtonModule, AuthComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    ButtonModule,
+    CardModule,
+    TabViewModule,
+    PanelModule,
+    AuthComponent,
+  ],
   templateUrl: './app.component.html',
   styles: [],
 })
