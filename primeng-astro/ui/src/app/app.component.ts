@@ -2,12 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { TabViewModule } from 'primeng/tabview';
-import { PanelModule } from 'primeng/panel';
 
-import { AuthComponent } from './auth/auth.component';
 import { AppState } from './app.reducer';
 
 @Component({
