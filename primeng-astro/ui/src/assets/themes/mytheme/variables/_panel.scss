@@ -1,14 +1,14 @@
 /// Border color of a panel header
 /// @group panel
-$panelHeaderBorderColor: #dee2e6;
+$panelHeaderBorderColor: var(--container-color-border);
 
 /// Border of a panel header
 /// @group panel
-$panelHeaderBorder: 1px solid #dee2e6;
+$panelHeaderBorder: 1px solid var(--container-color-border);
 
 /// Background of a panel header
 /// @group panel
-$panelHeaderBg: #f8f9fa;
+$panelHeaderBg: var(--color-background-surface-header);
 
 /// Text color of a panel header
 /// @group panel
@@ -16,19 +16,27 @@ $panelHeaderTextColor: $textColor;
 
 /// Font weight of a panel header
 /// @group panel
-$panelHeaderFontWeight: 600;
+$panelHeaderFontWeight: var(--font-heading-2-font-weight, 400);
+
+/// Font weight of a panel header
+/// @group panel
+$panelHeaderFontSize: var(--font-heading-2-font-size, 1.5rem);
+
+/// Font family of a panel header
+/// @group panel
+$panelHeaderFontFamily: var(--font-heading-2-font-family, 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif);
 
 /// Padding of a panel header
 /// @group panel
-$panelHeaderPadding: 1rem;
+$panelHeaderPadding: var(--spacing-4);
 
-/// Font weight of a toggleable panel header
+/// Padding of a toggleable panel header
 /// @group panel
-$panelToggleableHeaderPadding: .5rem 1rem;
+$panelToggleableHeaderPadding: var(--spacing-4);
 
 /// Background of a panel header in hover state e.g. toggleable state
 /// @group panel
-$panelHeaderHoverBg: #e9ecef;
+$panelHeaderHoverBg: $primaryColor;
 
 /// Border color of a panel header in hover state e.g. toggleable state
 /// @group panel
@@ -40,15 +48,27 @@ $panelHeaderTextHoverColor: #495057;
 
 /// Border color for the content section of a panel
 /// @group panel
-$panelContentBorderColor: #dee2;
+$panelContentBorderColor: var(--container-color-border);
 
 /// Border for the content section of a panel
 /// @group panel
-$panelContentBorder: 1px solid #dee2e6;
+$panelContentBorder: 1px solid var(--container-color-border);
 
 /// Background for the content section of a panel
 /// @group panel
-$panelContentBg: #ffffff;
+$panelContentBg: #1b2d3e;
+
+/// Font size for the content section of a panel
+/// @group panel
+$panelContentFontSize: var(--font-body-1-font-size, 1rem);
+
+/// Line Height for the content section of a panel
+/// @group panel
+$panelContentLineHeight: var(--font-body-1-line-height, calc(24 / 16));
+
+/// Letter Spacing for the content section of a panel
+/// @group panel
+$panelContentLetterSpacing: var(--font-body-1-letter-spacing, 0.005em);
 
 /// Background for the striped row.
 /// @group panel
@@ -60,15 +80,15 @@ $panelContentTextColor: $textColor;
 
 /// Padding for the content section of a panel
 /// @group panel
-$panelContentPadding: 1rem;
+$panelContentPadding: var(--spacing-4);
 
 /// Border for the footer section of a panel
 /// @group panel
-$panelFooterBorder: 1px solid #dee2e6;
+$panelFooterBorder: 1px solid var(--container-color-border);
 
 /// Background for the footer section of a panel
 /// @group panel
-$panelFooterBg: #ffffff;
+$panelFooterBg: var(--color-background-surface-default);
 
 /// Text color for the footer section of a panel
 /// @group panel
@@ -76,7 +96,7 @@ $panelFooterTextColor: $textColor;
 
 /// Padding for the footer section of a panel
 /// @group panel
-$panelFooterPadding: 0.5rem 1rem;
+$panelFooterPadding: var(--spacing-4);
 
 /// Spacing between to accordion panels
 /// @group panel
@@ -156,15 +176,15 @@ $accordionContentPadding: $panelContentPadding;
 
 /// Border for a parent element containing all the headers of a tabview
 /// @group panel
-$tabviewNavBorder: 1px solid #dee2e6;
+$tabviewNavBorder: 4px solid transparent;
 
 /// Border width for a parent element containing all the headers of a tabview
 /// @group panel
-$tabviewNavBorderWidth: 0 0 2px 0;
+$tabviewNavBorderWidth: 0 0 4px 0;
 
 /// Background for a parent element containing all the headers of a tabview
 /// @group panel
-$tabviewNavBg: #ffffff;
+$tabviewNavBg: var(--color-background-surface-header);
 
 /// Spacing between tabview headers
 /// @group panel
@@ -172,7 +192,7 @@ $tabviewHeaderSpacing: 0;
 
 /// Border of a tabview header
 /// @group panel
-$tabviewHeaderBorder: solid #dee2e6;
+$tabviewHeaderBorder: solid var(--color-background-interactive-default);
 
 /// Border width of a tabview header
 /// @group panel
@@ -180,15 +200,15 @@ $tabviewHeaderBorderWidth: 0 0 2px 0;
 
 /// Border color of a tabview header
 /// @group panel
-$tabviewHeaderBorderColor: transparent transparent #dee2e6 transparent;
+$tabviewHeaderBorderColor: transparent transparent transparent transparent;
 
 /// Background of a tabview header
 /// @group panel
-$tabviewHeaderBg: #ffffff;
+$tabviewHeaderBg: var(--color-background-surface-header);
 
 /// Text color of a tabview header
 /// @group panel
-$tabviewHeaderTextColor: $textSecondaryColor;
+$tabviewHeaderTextColor: var(--color-background-interactive-default, #4dacff);
 
 /// Font weight of a tabview header
 /// @group panel
@@ -204,19 +224,19 @@ $tabviewHeaderMargin: 0 0 -2px 0;
 
 /// Background of a tabview header in hover state
 /// @group panel
-$tabviewHeaderHoverBg: #ffffff;
+$tabviewHeaderHoverBg: none;
 
 /// Border of a tabview header in hover state
 /// @group panel
-$tabviewHeaderHoverBorderColor: #9ba2aa;
+$tabviewHeaderHoverBorderColor: transparent;
 
 /// Text color of a tabview header in hover state
 /// @group panel
-$tabviewHeaderTextHoverColor: $textSecondaryColor;
+$tabviewHeaderTextHoverColor: var(--color-background-interactive-hover);
 
 /// Background of a tabview header in selected state
 /// @group panel
-$tabviewHeaderActiveBg: #ffffff;
+$tabviewHeaderActiveBg: transparent;
 
 /// Border of a tabview header in selected state
 /// @group panel
@@ -224,7 +244,7 @@ $tabviewHeaderActiveBorderColor: $primaryColor;
 
 /// Text color of a tabview header in selected state
 /// @group panel
-$tabviewHeaderTextActiveColor: $primaryColor;
+$tabviewHeaderTextActiveColor: var(--text-color-primary);
 
 /// Border for content section of a tabview tab
 /// @group panel
