@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 
 import { AppState } from './app.state';
 import { login } from './auth/state';
+import { selectUrl } from './route.state';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,8 @@ import { login } from './auth/state';
 })
 export class AppComponent implements OnInit {
   constructor(private store: Store<AppState>) {
-    this.store.subscribe((state) => {
-      console.log(new Date().toISOString(), '[APP STATE]:', state);
+    this.store.pipe(select(selectUrl)).subscribe((url) => {
+      console.log(url);
     });
   }
 
