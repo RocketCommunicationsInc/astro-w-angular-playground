@@ -7,11 +7,19 @@ import { logout, selectUserState } from '../auth/state';
 import { CardModule } from 'primeng/card';
 import { TabViewModule } from 'primeng/tabview';
 import { PanelModule } from 'primeng/panel';
+import { GlobalStatusBarComponent } from '../global-status-bar/global-status-bar.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, ButtonModule, CardModule, TabViewModule, PanelModule],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    CardModule,
+    TabViewModule,
+    PanelModule,
+    GlobalStatusBarComponent,
+  ],
   templateUrl: './dashboard.component.html',
   styles: [],
 })

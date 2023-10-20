@@ -1,0 +1,13 @@
+/* .gsb-layout {
+    position: fixed;
+    height: 5rem;
+    z-index: 997;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0 1rem;
+    background-color: var(--surface-card);
+    transition: left .2s;
+    display: flex;
+    align-items: center;
+} */
