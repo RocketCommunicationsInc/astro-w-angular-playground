@@ -75,5 +75,8 @@
         background: $tabviewContentBg;
         padding: $tabviewContentPadding;
         border: $tabviewContentBorder;
+        color: $tabviewContentTextColor;
+        border-bottom-right-radius: $borderRadius;
+        border-bottom-left-radius: $borderRadius;
     }
 }

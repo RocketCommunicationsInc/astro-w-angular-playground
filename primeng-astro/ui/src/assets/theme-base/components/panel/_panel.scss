@@ -1,17 +1,13 @@
 .p-panel {
     .p-panel-header {
-        border-top: $panelHeaderBorder;
-        border-left: $panelHeaderBorder;
-        border-right: $panelHeaderBorder;
+        border: $panelHeaderBorder;
         padding: $panelHeaderPadding;
         background: $panelHeaderBg;
-        font-family: $panelHeaderFontFamily;
-        font-size: $panelHeaderFontSize;
-        font-weight: $panelHeaderFontWeight;
+        color: $panelHeaderTextColor;
+        border-top-right-radius: $borderRadius;
+        border-top-left-radius: $borderRadius;
 
         .p-panel-title {
-            font-family: $panelHeaderFontFamily;
-            font-size: $panelHeaderFontSize;
             font-weight: $panelHeaderFontWeight;
         }
 
@@ -30,20 +26,17 @@
         padding: $panelContentPadding;
         border: $panelContentBorder;
         background: $panelContentBg;
+        color: $panelContentTextColor;
+        border-bottom-right-radius: $borderRadius;
+        border-bottom-left-radius: $borderRadius;
         border-top: 0 none;
-        font-size: $panelContentFontSize;
-        line-height: $panelContentLineHeight;
-        letter-spacing: $panelContentLetterSpacing;
-    }
-
-    .p-panel-content p {
-        margin: 0;
     }
 
     .p-panel-footer {
         padding: $panelFooterPadding;
         border: $panelFooterBorder;
         background: $panelFooterBg;
+        color: $panelFooterTextColor;
         border-top: 0 none;
     }
 

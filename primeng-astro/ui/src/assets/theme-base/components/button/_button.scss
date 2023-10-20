@@ -21,13 +21,13 @@
 
     &.p-button-outlined {
         background-color: transparent;
-        color: $secondaryButtonTextColor;
-        border: $secondaryButtonBorder;
+        color: $buttonBg;
+        border: $outlinedButtonBorder;
 
         &:enabled:hover {
             background: rgba($buttonBg, $textButtonHoverBgOpacity);
-            color: $secondaryButtonTextHoverColor;
-            border: 1px solid $secondaryButtonHoverBorderColor;
+            color: $buttonBg;
+            border: $outlinedButtonBorder;
         }
 
         &:enabled:active {
