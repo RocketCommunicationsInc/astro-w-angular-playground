@@ -15,8 +15,6 @@ export const authRoutes: Routes = [
     path: 'login',
     component: AuthComponent,
     providers: [AuthService, AuthDataService],
-    resolve: {
-      users: authResolver,
-    },
+    resolve: { users: authResolver },
   },
 ];
