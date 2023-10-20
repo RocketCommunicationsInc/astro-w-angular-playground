@@ -1,5 +1,5 @@
 import { Observable, noop, tap } from 'rxjs';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { ButtonModule } from 'primeng/button';
@@ -16,12 +16,10 @@ import { AuthService } from './services/auth.service';
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent {
   users$: Observable<User[]> = this.authService.entities$;
 
   constructor(private authService: AuthService, private store: Store) {}
-
-  ngOnInit(): void {}
 
   login() {
     this.authService
