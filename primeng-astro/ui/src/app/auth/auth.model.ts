@@ -21,3 +21,5 @@ export type User = {
     bs: string;
   };
 };
+
+export const userKey = 'Users';

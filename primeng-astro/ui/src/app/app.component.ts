@@ -1,29 +1,31 @@
-import { Component } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { TabViewModule } from 'primeng/tabview';
-import { PanelModule } from 'primeng/panel';
+import { Store, select } from '@ngrx/store';
+
+import { AppState } from './app.state';
+import { login } from './auth/state';
+import { selectUrl } from './route.state';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    HttpClientModule,
-    ButtonModule,
-    CardModule,
-    TabViewModule,
-    PanelModule,
-  ],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
   styles: [],
 })
-export class AppComponent {
-  constructor(private http: HttpClient) {
-    this.http.get('/api/v1/posts').subscribe(console.log);
+export class AppComponent implements OnInit {
+  constructor(private store: Store<AppState>) {
+    this.store.pipe(select(selectUrl)).subscribe((url) => {
+      console.log(url);
+    });
+  }
+
+  ngOnInit(): void {
+    const userProfile = localStorage.getItem('user');
+
+    if (userProfile) {
+      this.store.dispatch(login({ payload: JSON.parse(userProfile) }));
+    }
   }
 }
