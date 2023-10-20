@@ -7,7 +7,7 @@ import { EntityDataService } from '@ngrx/data';
 import { AuthDataService } from './services/auth-data.service';
 import { userKey } from './auth.model';
 
-export const userResolver: ResolveFn<boolean> = () => {
+export const authResolver: ResolveFn<boolean> = () => {
   const entityDataService = inject(EntityDataService);
   const authDataService = inject(AuthDataService);
   const authService = inject(AuthService);
