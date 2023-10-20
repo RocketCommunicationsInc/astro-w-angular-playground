@@ -20,6 +20,7 @@ export const { selectUserState } = createFeature({
 export const authEntityMetadata: EntityMetadataMap = {
   [userKey]: {},
 };
+
 export const authEntityPluralNames: EntityPluralNames = {
-  [userKey]: 'Users',
+  [userKey]: userKey,
 };
