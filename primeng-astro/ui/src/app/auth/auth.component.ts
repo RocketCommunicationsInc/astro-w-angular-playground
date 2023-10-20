@@ -1,11 +1,12 @@
-import { noop, tap } from 'rxjs';
-import { Component } from '@angular/core';
+import { Observable, noop, tap } from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { ButtonModule } from 'primeng/button';
 
+import { User } from './auth.model';
 import { login } from './state';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -13,13 +14,18 @@ import { AuthService } from './auth.service';
   imports: [CommonModule, ButtonModule],
   templateUrl: './auth.component.html',
   styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit {
+  users$: Observable<User[]> = this.authService.entities$;
+
   constructor(private authService: AuthService, private store: Store) {}
+
+  ngOnInit(): void {}
 
   login() {
     this.authService
-      .fetchUser(7)
+      .getByKey(3)
       .pipe(tap((user) => this.store.dispatch(login({ payload: user }))))
       .subscribe({
         next: noop,
