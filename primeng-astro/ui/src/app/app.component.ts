@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import { AppState } from './app.reducer';
+import { AppState } from './app.state';
 import { login } from './auth/state';
 
 @Component({

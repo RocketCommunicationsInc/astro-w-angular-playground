@@ -1,9 +1,8 @@
 import { Routes } from '@angular/router';
 
 import { AuthComponent } from './auth.component';
+import { AuthService } from './auth.service';
 import { authResolver } from './auth.resolver';
-import { AuthService } from './services/auth.service';
-import { AuthDataService } from './services/auth-data.service';
 
 export const authRoutes: Routes = [
   {
@@ -14,7 +13,7 @@ export const authRoutes: Routes = [
   {
     path: 'login',
     component: AuthComponent,
-    providers: [AuthService, AuthDataService],
+    providers: [AuthService],
     resolve: { users: authResolver },
   },
 ];

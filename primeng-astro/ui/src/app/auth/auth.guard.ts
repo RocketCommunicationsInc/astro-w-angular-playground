@@ -3,7 +3,7 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 
-import { AppState } from '../app.reducer';
+import { AppState } from '../app.state';
 import { selectUserState } from './state';
 
 export const authGuard: CanActivateFn = () => {
@@ -17,6 +17,6 @@ export const authGuard: CanActivateFn = () => {
       if (!user) {
         router.navigateByUrl('/login');
       }
-    })
+    }),
   );
 };

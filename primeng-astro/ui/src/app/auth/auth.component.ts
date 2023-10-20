@@ -4,9 +4,9 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { ButtonModule } from 'primeng/button';
 
-import { User } from './auth.model';
 import { login } from './state';
-import { AuthService } from './services/auth.service';
+import { User } from './auth.model';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-auth',

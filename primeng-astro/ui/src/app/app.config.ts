@@ -6,11 +6,19 @@ import { provideStore } from '@ngrx/store';
 import { RouterState, provideRouterStore } from '@ngrx/router-store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
-import { provideEntityData, withEffects } from '@ngrx/data';
+import {
+  DefaultDataServiceConfig,
+  provideEntityData,
+  withEffects,
+} from '@ngrx/data';
 
 import { routes } from './app.routes';
-import { appReducer, entityConfig } from './app.reducer';
-import { appEffects } from './app.effects';
+import {
+  DefaultDataServiceProvider,
+  appEffects,
+  appReducer,
+  entityConfig,
+} from './app.state';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -28,9 +36,8 @@ export const appConfig: ApplicationConfig = {
     // must come after provideStore
     provideStoreDevtools({ maxAge: 25, logOnly: true }),
     provideEffects(appEffects),
+    DefaultDataServiceProvider,
     provideEntityData(entityConfig, withEffects()),
-    provideRouterStore({
-      routerState: RouterState.Minimal,
-    }),
+    provideRouterStore({ routerState: RouterState.Minimal }),
   ],
 };
