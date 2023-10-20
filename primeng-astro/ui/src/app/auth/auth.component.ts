@@ -1,5 +1,6 @@
 import { Observable, noop, tap } from 'rxjs';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { ButtonModule } from 'primeng/button';
@@ -19,12 +20,21 @@ import { AuthService } from './auth.service';
 export class AuthComponent {
   users$: Observable<User[]> = this.authService.entities$;
 
-  constructor(private authService: AuthService, private store: Store) {}
+  constructor(
+    private authService: AuthService,
+    private store: Store,
+    private router: Router,
+  ) {}
 
   login() {
     this.authService
       .getByKey(3)
-      .pipe(tap((user) => this.store.dispatch(login({ payload: user }))))
+      .pipe(
+        tap((user) => {
+          this.store.dispatch(login({ payload: user }));
+          this.router.navigateByUrl('/dashboard');
+        }),
+      )
       .subscribe({
         next: noop,
         error: (err) => console.warn(err.message),

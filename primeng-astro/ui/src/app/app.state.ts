@@ -47,8 +47,12 @@ export const DefaultDataServiceProvider = {
 };
 
 const logger = (reducer: ActionReducer<AppState>): ActionReducer<AppState> => {
+  /**
+   * just an example of where something can be done
+   * before it hits the reducers
+   */
   return (state, action) => {
-    console.log(new Date().toISOString(), '[APP STATE]:', state);
+    // console.log(new Date().toISOString(), '[APP STATE]:', state);
     return reducer(state, action);
   };
 };

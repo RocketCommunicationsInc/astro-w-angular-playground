@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 
 import { AppState } from './app.state';
 import { login } from './auth/state';
-import { selectUrl } from './route.state';
 
 @Component({
   selector: 'app-root',
@@ -15,11 +14,7 @@ import { selectUrl } from './route.state';
   styles: [],
 })
 export class AppComponent implements OnInit {
-  constructor(private store: Store<AppState>) {
-    this.store.pipe(select(selectUrl)).subscribe((url) => {
-      console.log(url);
-    });
-  }
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     const userProfile = localStorage.getItem('user');

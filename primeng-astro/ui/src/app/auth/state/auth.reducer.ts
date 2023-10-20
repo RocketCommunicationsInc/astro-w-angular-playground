@@ -4,10 +4,8 @@ import { EntityMetadataMap, EntityPluralNames } from '@ngrx/data';
 import { User, userKey } from '../auth.model';
 import { login, logout } from './auth.actions';
 
-export const initialAuthState: User | null = null;
-
 export const authReducer = createReducer<User | null>(
-  initialAuthState,
+  null,
   on(login, (_, action) => action.payload),
   on(logout, () => null),
 );

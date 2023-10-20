@@ -1,19 +1,17 @@
-import { inject } from '@angular/core';
-import { Actions, FunctionalEffect, createEffect, ofType } from '@ngrx/effects';
 import { tap } from 'rxjs';
+import { inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { Actions, FunctionalEffect, createEffect, ofType } from '@ngrx/effects';
 
 import { login, logout } from './auth.actions';
 
 const loginEffect = () => {
-  const router = inject(Router);
   const actions = inject(Actions);
   return actions.pipe(
     ofType(login),
     tap(({ payload }) => {
       localStorage.setItem('user', JSON.stringify(payload));
-      router.navigateByUrl('/dashboard');
-    })
+    }),
   );
 };
 
@@ -25,7 +23,7 @@ const logoutEffect = () => {
     tap(() => {
       localStorage.removeItem('user');
       router.navigateByUrl('/login');
-    })
+    }),
   );
 };
 
