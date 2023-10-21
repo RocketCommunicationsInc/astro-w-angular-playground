@@ -11,6 +11,15 @@ import {
   authEntityMetadata,
   authEntityPluralNames,
 } from './auth/state';
+import { albumsEntityMetadata, albumsEntityPluralNames } from './albums/state';
+import { photosEntityMetadata, phtosoEntityPluralNames } from './photos/state';
+import { todosEntityMetadata, todosEntityPluralNames } from './todos/state';
+import {
+  commentsEntityMetadata,
+  commentsEntityPluralNames,
+  postsEntityMetadata,
+  postsEntityPluralNames,
+} from './posts/state';
 
 export type AppState = {
   router: RouterReducerState;
@@ -29,9 +38,19 @@ export const appEffects: { [key: string]: FunctionalEffect } = {
 export const entityConfig: EntityDataModuleConfig = {
   entityMetadata: {
     ...authEntityMetadata,
+    ...albumsEntityMetadata,
+    ...photosEntityMetadata,
+    ...todosEntityMetadata,
+    ...postsEntityMetadata,
+    ...commentsEntityMetadata,
   },
   pluralNames: {
     ...authEntityPluralNames,
+    ...albumsEntityPluralNames,
+    ...phtosoEntityPluralNames,
+    ...todosEntityPluralNames,
+    ...postsEntityPluralNames,
+    ...commentsEntityPluralNames,
   },
 };
 

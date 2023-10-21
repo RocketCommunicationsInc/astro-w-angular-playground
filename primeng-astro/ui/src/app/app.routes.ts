@@ -6,6 +6,7 @@ import { albumsRoutes } from './albums/albums.routes';
 import { photosRoutes } from './photos/photos.routes';
 import { postsRoutes } from './posts/posts.routes';
 import { todosRoutes } from './todos/todos.routes';
+import { Path } from './shared';
 
 export const routes: Routes = [
   ...authRoutes,
@@ -16,6 +17,6 @@ export const routes: Routes = [
   ...todosRoutes,
   {
     path: '**',
-    redirectTo: '/login',
+    redirectTo: '/' + Path.login,
   },
 ];

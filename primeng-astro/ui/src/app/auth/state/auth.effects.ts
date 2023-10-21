@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Actions, FunctionalEffect, createEffect, ofType } from '@ngrx/effects';
 
 import { login, logout } from './auth.actions';
+import { Path } from 'src/app/shared';
 
 const loginEffect = () => {
   const actions = inject(Actions);
@@ -22,7 +23,7 @@ const logoutEffect = () => {
     ofType(logout),
     tap(() => {
       localStorage.removeItem('user');
-      router.navigateByUrl('/login');
+      router.navigateByUrl('/' + Path.login);
     }),
   );
 };

@@ -1,19 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 
 import { AppState } from './app.state';
 import { login } from './auth/state';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { selectUrl } from './route.state';
+import { Path } from './shared';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, SideNavComponent],
   templateUrl: './app.component.html',
-  styles: [],
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  url$ = this.store.pipe(select(selectUrl));
+  login = '/' + Path.login;
+
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {

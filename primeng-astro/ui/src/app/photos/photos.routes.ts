@@ -1,14 +1,15 @@
 import { Routes } from '@angular/router';
 
+import { Path, loadedEntityResolver } from '../shared';
 import { authGuard } from '../auth/auth.guard';
 import { PhotosComponent } from './photos.component';
+import { PhotosService } from './photos.service';
 
 export const photosRoutes: Routes = [
   {
-    path: 'photos',
+    path: Path.photos,
     canActivate: [authGuard],
     component: PhotosComponent,
-    // providers: [AuthService],
-    // resolve: { users: authResolver },
+    resolve: { photos: () => loadedEntityResolver(PhotosService) },
   },
 ];

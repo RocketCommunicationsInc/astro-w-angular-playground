@@ -1,7 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { EntityMetadataMap, EntityPluralNames } from '@ngrx/data';
 
-import { User, userKey } from '../auth.model';
+import { User, UsersKey } from '../auth.model';
 import { login, logout } from './auth.actions';
 
 export const authReducer = createReducer<User | null>(
@@ -16,9 +16,9 @@ export const { selectUserState } = createFeature({
 });
 
 export const authEntityMetadata: EntityMetadataMap = {
-  [userKey]: {},
+  [UsersKey]: {},
 };
 
 export const authEntityPluralNames: EntityPluralNames = {
-  [userKey]: userKey,
+  [UsersKey]: UsersKey,
 };
