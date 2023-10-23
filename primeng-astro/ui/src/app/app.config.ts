@@ -10,7 +10,6 @@ import { provideEntityData, withEffects } from '@ngrx/data';
 
 import { environment } from 'src/environments/environment';
 import { routes } from './app.routes';
-import { RouterSerializer } from './route.state';
 import {
   DefaultDataServiceProvider,
   appEffects,
@@ -38,6 +37,6 @@ export const appConfig: ApplicationConfig = {
     provideEffects(appEffects),
     DefaultDataServiceProvider,
     provideEntityData(entityConfig, withEffects()),
-    provideRouterStore({ serializer: RouterSerializer }),
+    provideRouterStore(),
   ],
 };
