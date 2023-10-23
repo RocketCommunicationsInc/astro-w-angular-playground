@@ -13,7 +13,16 @@ import { PanelModule } from 'primeng/panel';
   standalone: true,
   imports: [CommonModule, ButtonModule, CardModule, TabViewModule, PanelModule],
   templateUrl: './dashboard.component.html',
-  styles: [],
+  styles: [
+    `
+      :host {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+      }
+    `,
+  ],
 })
 export class DashboardComponent {
   user$ = this.store.pipe(select(selectUserState));

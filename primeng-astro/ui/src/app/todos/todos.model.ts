@@ -4,3 +4,5 @@ export type Todo = {
   title: string;
   completed: boolean;
 };
+
+export const TodosKey = 'Todos';

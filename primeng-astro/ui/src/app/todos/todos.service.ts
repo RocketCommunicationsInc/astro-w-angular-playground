@@ -4,11 +4,11 @@ import {
   EntityCollectionServiceElementsFactory,
 } from '@ngrx/data';
 
-import { User, UsersKey } from './auth.model';
+import { Todo, TodosKey } from './todos.model';
 
 @Injectable({ providedIn: 'root' })
-export class AuthService extends EntityCollectionServiceBase<User> {
+export class TodosService extends EntityCollectionServiceBase<Todo> {
   constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
-    super(UsersKey, serviceElementsFactory);
+    super(TodosKey, serviceElementsFactory);
   }
 }

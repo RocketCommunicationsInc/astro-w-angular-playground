@@ -22,4 +22,4 @@ export type User = {
   };
 };
 
-export const userKey = 'Users';
+export const UsersKey = 'Users';

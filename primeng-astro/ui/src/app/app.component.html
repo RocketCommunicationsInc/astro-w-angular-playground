@@ -1,1 +1,17 @@
-<router-outlet />
+<ng-container *ngIf="url$ | async as url" [ngSwitch]="url">
+  <router-outlet *ngSwitchCase="login" />
+  <!-- this outer div could become a classifications component, maybe -->
+  <div *ngSwitchDefault>
+    <header>
+      <!-- gsb can be moved to here -->
+    </header>
+    <div class="app-grid">
+      <aside>
+        <app-side-nav />
+      </aside>
+      <main>
+        <router-outlet />
+      </main>
+    </div>
+  </div>
+</ng-container>

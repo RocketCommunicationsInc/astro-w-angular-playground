@@ -1,2 +1,2 @@
-<div *ngIf="users$ | async as users">{{ users | json }}</div>
 <p-button label="Login" (onClick)="login()" />
+<pre *ngIf="users$ | async as users">{{ users | json }}</pre>
