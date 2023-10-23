@@ -19,6 +19,7 @@ import { Path } from '../shared';
     `
       :host {
         display: flex;
+        flex-direction: column;
         height: 100vh;
         justify-content: center;
         align-items: center;
@@ -29,6 +30,7 @@ import { Path } from '../shared';
 export class AuthComponent {
   users$ = this.authService.entities$;
   userId = 0;
+  isLoading = false;
 
   constructor(
     private authService: AuthService,
@@ -42,6 +44,11 @@ export class AuthComponent {
     if (userProfile) {
       this.navigateToDashboard();
     }
+
+    this.authService.loading$.subscribe({
+      next: (loading) => (this.isLoading = loading),
+      error: (err) => console.log(err.message),
+    });
   }
 
   navigateToDashboard() {
@@ -55,7 +62,12 @@ export class AuthComponent {
   login() {
     this.authService
       .getByKey(this.userId)
-      .pipe(tap((user) => this.store.dispatch(login({ payload: user }))))
+      .pipe(
+        tap((user) => {
+          this.store.dispatch(login({ payload: user }));
+          this.navigateToDashboard();
+        }),
+      )
       .subscribe({
         next: noop,
         error: (err) => console.warn(err.message),
