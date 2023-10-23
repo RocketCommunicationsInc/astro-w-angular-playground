@@ -5,3 +5,5 @@ export type Photo = {
   url: string;
   thumbnailUrl: string;
 };
+
+export const PhotosKey = 'Photos';

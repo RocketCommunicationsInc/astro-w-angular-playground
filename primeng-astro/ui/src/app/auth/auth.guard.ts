@@ -5,6 +5,7 @@ import { Store, select } from '@ngrx/store';
 
 import { AppState } from '../app.state';
 import { selectUserState } from './state';
+import { Path } from '../shared';
 
 export const authGuard: CanActivateFn = () => {
   const store = inject(Store<AppState>);
@@ -15,7 +16,7 @@ export const authGuard: CanActivateFn = () => {
     map((user) => Boolean(user)),
     tap((user) => {
       if (!user) {
-        router.navigateByUrl('/login');
+        router.navigateByUrl('/' + Path.login);
       }
     }),
   );

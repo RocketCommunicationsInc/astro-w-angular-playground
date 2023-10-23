@@ -4,11 +4,11 @@ import {
   EntityCollectionServiceElementsFactory,
 } from '@ngrx/data';
 
-import { User, UsersKey } from './auth.model';
+import { Comment, CommentsKey } from '../posts.model';
 
 @Injectable({ providedIn: 'root' })
-export class AuthService extends EntityCollectionServiceBase<User> {
+export class CommentsService extends EntityCollectionServiceBase<Comment> {
   constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
-    super(UsersKey, serviceElementsFactory);
+    super(CommentsKey, serviceElementsFactory);
   }
 }

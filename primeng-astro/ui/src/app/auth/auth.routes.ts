@@ -1,19 +1,18 @@
 import { Routes } from '@angular/router';
 
+import { Path, loadedEntityResolver } from '../shared';
 import { AuthComponent } from './auth.component';
 import { AuthService } from './auth.service';
-import { authResolver } from './auth.resolver';
 
 export const authRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/' + Path.login,
     pathMatch: 'full',
   },
   {
-    path: 'login',
+    path: Path.login,
     component: AuthComponent,
-    providers: [AuthService],
-    resolve: { users: authResolver },
+    resolve: { users: () => loadedEntityResolver(AuthService) },
   },
 ];

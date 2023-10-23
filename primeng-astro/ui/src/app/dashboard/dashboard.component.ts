@@ -21,7 +21,16 @@ import { GlobalStatusBarComponent } from '../global-status-bar/global-status-bar
     GlobalStatusBarComponent,
   ],
   templateUrl: './dashboard.component.html',
-  styles: [],
+  styles: [
+    `
+      :host {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+      }
+    `,
+  ],
 })
 export class DashboardComponent {
   user$ = this.store.pipe(select(selectUserState));

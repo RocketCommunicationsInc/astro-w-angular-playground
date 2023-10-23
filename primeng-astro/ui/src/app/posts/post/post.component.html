@@ -1,0 +1,5 @@
+<h3>Post</h3>
+<pre *ngIf="post$ | async as post">{{ post | json }}</pre>
+
+<h3>Comments</h3>
+<pre *ngIf="comments$ | async as comments">{{ comments | json }}</pre>
