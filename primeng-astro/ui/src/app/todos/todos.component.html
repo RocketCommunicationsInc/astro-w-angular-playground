@@ -1,2 +1,13 @@
-<h3>Todos</h3>
-<pre *ngIf="todos$ | async as todos">{{ todos | json }}</pre>
+<p-panel>
+  <ng-template pTemplate="header">
+    <div class="flex-grow-1 flex align-items-center justify-content-between">
+      <h3>Todos</h3>
+      <p-button label="Add" icon="pi pi-plus" />
+    </div>
+  </ng-template>
+  <p-dataView *ngIf="todos$ | async as todos" [value]="todos">
+    <ng-template let-todo pTemplate="listItem">
+      <div>{{ todo.userId }} {{ todo.title }} {{ todo.completed }}</div>
+    </ng-template>
+  </p-dataView>
+</p-panel>
