@@ -24,6 +24,10 @@ import { Path } from '../shared';
         justify-content: center;
         align-items: center;
       }
+
+      .login-container {
+        height: 31.125rem;
+      }
     `,
   ],
 })

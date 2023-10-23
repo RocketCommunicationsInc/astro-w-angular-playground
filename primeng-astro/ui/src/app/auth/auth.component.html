@@ -1,4 +1,7 @@
-<div *ngIf="users$ | async as users" class="flex flex-column gap-4">
+<div
+  *ngIf="users$ | async as users"
+  class="login-container flex flex-column gap-4"
+>
   <h2>Select A User To Log In As</h2>
   <p-listbox
     [options]="users"
