@@ -1,2 +1,8 @@
-<div *ngIf="users$ | async as users">{{ users | json }}</div>
-<p-button label="Login" (onClick)="login()" />
+<div *ngIf="users$ | async as users" class="">
+  <p-listbox [options]="users" optionValue="id" (onChange)="onChange($event)">
+    <ng-template let-user pTemplate="item">
+      <div>{{ user.name }}</div>
+    </ng-template>
+  </p-listbox>
+  <p-button [disabled]="!userId" label="Login" (onClick)="login()" />
+</div>
