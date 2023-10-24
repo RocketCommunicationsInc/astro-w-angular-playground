@@ -1,2 +1,33 @@
-<p-button label="Login" (onClick)="login()" />
-<pre *ngIf="users$ | async as users">{{ users | json }}</pre>
+<div
+  *ngIf="users$ | async as users"
+  class="login-container flex flex-column gap-4"
+>
+  <h2>Select A User To Log In As</h2>
+  <p-listbox
+    [options]="users"
+    optionValue="id"
+    (onChange)="onChange($event)"
+    [listStyle]="{ height: '24rem', width: '32rem' }"
+  >
+    <ng-template let-user pTemplate="item">
+      <div class="flex-grow-1">
+        <div class="flex align-items-center justify-content-between">
+          <h3>{{ user.name }}</h3>
+          <small>{{ user.company.name }}</small>
+        </div>
+        <div class="flex align-items-center justify-content-between">
+          <p>{{ user.username }}</p>
+          <p>{{ user.email }}</p>
+        </div>
+      </div>
+    </ng-template>
+  </p-listbox>
+  <p-button
+    *ngIf="users.length > 0"
+    [loading]="isLoading"
+    class="align-self-end"
+    [disabled]="!userId"
+    label="Login"
+    (onClick)="login()"
+  />
+</div>
