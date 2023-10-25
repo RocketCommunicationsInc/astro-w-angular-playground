@@ -2,27 +2,18 @@ $gsb-height: 6rem;
 $spacing-050: 0.125rem;
 $spacing-1: 0.25rem;
 
-// TODO: remove once gsb is added to app component
-header {
-  background-color: #555;
-  height: $gsb-height;
-}
-
 .app-grid {
   display: grid;
   grid-template-columns: minmax(18rem, 1.5fr) 8.5fr;
   height: calc(100vh - $gsb-height);
   padding: $spacing-050;
   column-gap: $spacing-1;
-  background-color: lightcyan; // TODO: Remove
 }
 
 aside {
   height: calc(100vh - $gsb-height - $spacing-1);
-  background-color: #333; // TODO: Remove
 }
 
 main {
   height: calc(100vh - $gsb-height - $spacing-1);
-  background-color: #777; // TODO: Remove
 }
