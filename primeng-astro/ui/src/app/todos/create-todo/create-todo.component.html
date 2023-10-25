@@ -1,0 +1,31 @@
+<p-dialog
+  header="Add Todo"
+  [visible]="true"
+  [modal]="true"
+  [style]="{ width: '32rem' }"
+  (visibleChange)="onClose()"
+  *ngIf="user$ | async as user"
+>
+  <form class="py-4 flex" (ngSubmit)="onSubmit(user.id)">
+    <input
+      id="create-todo"
+      #addInput
+      pInputText
+      type="text"
+      [(ngModel)]="value"
+      class="flex-grow-1"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Add your todo here..."
+    />
+  </form>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      (onClick)="onSubmit(user.id)"
+      [loading]="(isLoading$ | async) || false"
+      label="Add"
+      type="submit"
+      [disabled]="!value"
+    />
+  </ng-template>
+</p-dialog>

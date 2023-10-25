@@ -1,7 +1,7 @@
 import { EntityDispatcherDefaultOptions } from '@ngrx/data';
 
 export const optimisticUpdates: EntityDispatcherDefaultOptions = {
-  optimisticAdd: true,
+  optimisticAdd: false,
   optimisticDelete: true,
   optimisticSaveEntities: true,
   optimisticUpdate: true,

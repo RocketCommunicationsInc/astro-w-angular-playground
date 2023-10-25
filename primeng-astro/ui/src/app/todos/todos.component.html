@@ -1,13 +1,64 @@
-<p-panel>
+<p-panel *ngIf="user$ | async as user">
   <ng-template pTemplate="header">
     <div class="flex-grow-1 flex align-items-center justify-content-between">
-      <h3>Todos</h3>
-      <p-button label="Add" icon="pi pi-plus" />
+      <div class="flex align-items-center gap-3">
+        <h3>Todos</h3>
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input pInputText (input)="onSearch($event)" />
+        </span>
+      </div>
+
+      <a [routerLink]="[{ outlets: { modal: ['add-todo'] } }]">
+        <p-button label="Add" icon="pi pi-plus" />
+      </a>
     </div>
   </ng-template>
   <p-dataView *ngIf="todos$ | async as todos" [value]="todos">
     <ng-template let-todo pTemplate="listItem">
-      <div>{{ todo.userId }} {{ todo.title }} {{ todo.completed }}</div>
+      <div pFocusTrap class="col-12 flex align-items-center gap-2">
+        <p-checkbox
+          *ngIf="completedTodosIds$ | async as completedTodosIds"
+          [value]="todo.id"
+          [ngModel]="completedTodosIds"
+          (onChange)="onCheck(todo)"
+        />
+
+        <input
+          #todoInput
+          pInputText
+          [id]="'edit-todo:' + todo.id"
+          type="text"
+          class="flex-grow-1"
+          [ngClass]="{ 'line-through': todo.completed }"
+          [value]="todo.title"
+          (blur)="onBlur(todo)"
+          (input)="updatedTitle = $any($event.target).value"
+          (focus)="updatedTitle = todo.title"
+          (keypress)="onKeypress(todo, $event)"
+          [disabled]="todo.completed"
+        />
+
+        <div class="flex align-items-center">
+          <p-button
+            (onClick)="todoInput.focus()"
+            icon="pi pi-pencil"
+            [rounded]="true"
+            [text]="true"
+            [disabled]="todo.completed"
+          />
+
+          <p-button
+            (onClick)="onDelete(todo)"
+            icon="pi pi-trash"
+            [rounded]="true"
+            [text]="true"
+            severity="danger"
+          />
+        </div>
+      </div>
     </ng-template>
   </p-dataView>
 </p-panel>
+
+<router-outlet name="modal" />
