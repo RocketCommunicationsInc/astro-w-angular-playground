@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
 
 import { authGuard } from '../auth/auth.guard';
+import { loadedEntityResolver } from '../shared';
 import { TodosComponent } from './todos.component';
 import { TodosService } from './todos.service';
-import { loadedEntityResolver } from '../shared';
+import { CreateTodoComponent } from './create-todo/create-todo.component';
 
 export const todosRoutes: Routes = [
   {
@@ -11,5 +12,12 @@ export const todosRoutes: Routes = [
     canActivate: [authGuard],
     component: TodosComponent,
     resolve: { todos: () => loadedEntityResolver(TodosService) },
+    children: [
+      {
+        path: 'add-todo',
+        component: CreateTodoComponent,
+        outlet: 'modal',
+      },
+    ],
   },
 ];
