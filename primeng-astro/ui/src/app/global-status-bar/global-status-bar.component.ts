@@ -4,15 +4,32 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
 import { MenuItem } from 'primeng/api';
+import { Store, select } from '@ngrx/store';
+import { logout, selectUserState } from '../auth/state';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 @Component({
   selector: 'app-global-status-bar',
   standalone: true,
-  imports: [CommonModule, ToolbarModule, ButtonModule, MenuModule],
+  imports: [
+    CommonModule,
+    ToolbarModule,
+    ButtonModule,
+    MenuModule,
+    OverlayPanelModule,
+  ],
   templateUrl: './global-status-bar.component.html',
   styleUrls: ['./global-status-bar.component.css'],
 })
 export class GlobalStatusBarComponent {
+  user$ = this.store.pipe(select(selectUserState));
+
+  logout() {
+    this.store.dispatch(logout());
+  }
+
+  constructor(private store: Store) {}
+
   items: MenuItem[] | undefined;
 
   ngOnInit() {
@@ -24,7 +41,10 @@ export class GlobalStatusBarComponent {
           console.log(event);
         },
       },
-      { label: 'Logout', icon: 'pi pi-logout' },
+      {
+        label: 'Logout',
+        icon: 'pi pi-logout',
+      },
     ];
   }
 }
