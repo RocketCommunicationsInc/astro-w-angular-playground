@@ -18,7 +18,7 @@ $shade000:rgba(255,255,255,.87) !default;  //text color
 $shade100:rgba(255,255,255,.60) !default;  //text secondary color
 $shade500:#233752 !default;
 $shade600:#172635 !default;  //input bg, border, divider (color-background-surface-header)
-$shade700:#091a32 !default;  //menu bg
+$shade700:#1b2d3e !default;  //menu bg
 $shade800:#1b2d3e !default;  //elevated surface (color-background-surface-default)
 $shade900:#101923 !default;  //ground surface
 
@@ -637,7 +637,7 @@ $progressBarValueTextColor:$primaryTextColor !default;
 //menu (e.g. menu, menubar, tieredmenu)
 $menuWidth:12.5rem !default;
 $menuBg:$shade700 !default;
-$menuBorder:1px solid $shade600 !default;
+$menuBorder:1px solid transparent !default;
 $menuTextColor:$shade000 !default;
 $menuitemPadding:.75rem 1.25rem !default;
 $menuitemBorderRadius:0 !default;
