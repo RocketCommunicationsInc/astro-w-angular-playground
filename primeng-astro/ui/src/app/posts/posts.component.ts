@@ -20,7 +20,6 @@ import { Path } from '../shared';
         flex-direction: column;
         overflow: auto;
         gap: 8px;
-        margin: 8px;
       }
     `,
   ],
