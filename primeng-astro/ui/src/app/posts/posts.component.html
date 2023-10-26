@@ -1,8 +1,15 @@
-<h2>Posts</h2>
+<h2 class="py-2">Posts</h2>
 <ng-container *ngIf="posts$ | async as posts">
-  <div class="bg-black-alpha-50" *ngFor="let post of posts">
+  <p-panel *ngFor="let post of posts">
+    <ng-template pTemplate="header">{{ post.title }}</ng-template>
+    {{ post.body }}
+    <ng-template pTemplate="footer">
+      <p-button [link]="true" [routerLink]="postsPath + '/' + post.id">Details</p-button>
+    </ng-template>
+  </p-panel>
+  <!-- <div class="bg-black-alpha-50" *ngFor="let post of posts">
     <h3>{{ post.title }}</h3>
     <p>{{ post.body }}</p>
     <a [routerLink]="postsPath + '/' + post.id">Details</a>
-  </div>
+  </div> -->
 </ng-container>
