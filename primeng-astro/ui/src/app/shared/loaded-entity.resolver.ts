@@ -15,7 +15,9 @@ export const loadedEntityResolver = <T>(
   return dataEntityService.loaded$.pipe(
     withLatestFrom(user$),
     map(([loaded, user]) => {
-      if (!loaded && user) dataEntityService.getWithQuery({ userId: user.id });
+      if (!loaded && user) {
+        dataEntityService.getWithQuery({ userId: user.id });
+      }
       return loaded;
     }),
   );

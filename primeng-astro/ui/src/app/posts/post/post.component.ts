@@ -23,19 +23,11 @@ import { CommentsService, PostsService } from '../services';
   ],
 })
 export class PostComponent {
+  comments$ = this.commentsService.entities$;
   postId$ = this.store.pipe(select(selectRouteParam('postId')));
-
   post$ = this.postsService.entityMap$.pipe(
     withLatestFrom(this.postId$),
     map(([postsMap, postId]) => postsMap[postId || '']),
-  );
-
-  comments$ = this.commentsService.entities$.pipe(
-    withLatestFrom(this.postId$),
-    map(([comments, postId]) => {
-      const id = postId || '';
-      return comments.filter((c) => c.postId.toString() === id);
-    }),
   );
 
   constructor(

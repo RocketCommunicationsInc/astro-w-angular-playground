@@ -1,10 +1,19 @@
+import { map } from 'rxjs';
+import { inject } from '@angular/core';
 import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { RouterReducerState, routerReducer } from '@ngrx/router-store';
-import { DefaultDataServiceConfig, EntityDataModuleConfig } from '@ngrx/data';
-import { FunctionalEffect } from '@ngrx/effects';
+import {
+  DefaultDataServiceConfig,
+  EntityActionFactory,
+  EntityDataModuleConfig,
+  EntityOp,
+  ofEntityOp,
+  ofEntityType,
+} from '@ngrx/data';
+import { Actions, FunctionalEffect, createEffect } from '@ngrx/effects';
 
-import { environment } from 'src/environments/environment';
 import { User } from './auth/auth.model';
+import { TodosKey } from './todos/todos.model';
 import {
   authReducer,
   authEffects,
@@ -33,6 +42,30 @@ export const appReducer: ActionReducerMap<AppState> = {
 
 export const appEffects: { [key: string]: FunctionalEffect } = {
   ...authEffects,
+  /**
+   * this optimisticErrors$ effect function has been proven to be the correct
+   * way to write an UNDO action on an other app. For some resonse it does not
+   * work as expected in this app. Leaving this here to investigate more.
+   */
+  optimisticErrors$: createEffect(
+    () => {
+      const actions = inject(Actions);
+      const entityActionFactory = inject(EntityActionFactory);
+      return actions.pipe(
+        ofEntityType([TodosKey]),
+        ofEntityOp([EntityOp.SAVE_UPDATE_ONE_ERROR]),
+        map((action) => {
+          const id = action.payload.data.originalAction.payload.data.id;
+          return entityActionFactory.create(
+            action.payload.entityName,
+            EntityOp.UNDO_ONE,
+            id,
+          );
+        }),
+      );
+    },
+    { functional: true },
+  ),
 };
 
 export const entityConfig: EntityDataModuleConfig = {
@@ -65,16 +98,23 @@ export const DefaultDataServiceProvider = {
   useValue: defaultDataServiceConfig,
 };
 
-const logger = (reducer: ActionReducer<AppState>): ActionReducer<AppState> => {
-  /**
-   * just an example of where something can be done
-   * before it hits the reducers
-   */
+type AR = ActionReducer<AppState>;
+const authMetaReducer = (reducer: AR): AR => {
   return (state, action) => {
-    // console.log(new Date().toISOString(), '[APP STATE]:', state);
+    if (state) {
+      // user logging in
+      if (action.type === '[Login Page] User Login') {
+        // drop entityCache from state
+        state = { router: state.router, user: state.user };
+      }
+      // user logging out
+      if (action.type === '[GSB - User Menu] Logout') {
+        // drop entityCache from state and set user to null
+        state = { router: state.router, user: null };
+      }
+    }
     return reducer(state, action);
   };
 };
 
-const isProd = environment.production;
-export const metaReducers: MetaReducer<AppState>[] = isProd ? [] : [logger];
+export const metaReducers: MetaReducer<AppState>[] = [authMetaReducer];
