@@ -2,9 +2,10 @@ import { Routes } from '@angular/router';
 
 import { Path, loadedEntityResolver } from '../shared';
 import { authGuard } from '../auth/auth.guard';
-import { CommentsService, PostsService } from './services';
+import { PostsService } from './services';
 import { PostsComponent } from './posts.component';
 import { PostComponent } from './post/post.component';
+import { postCommentsResolver } from './post-comments.resolver';
 
 export const postsRoutes: Routes = [
   {
@@ -20,7 +21,7 @@ export const postsRoutes: Routes = [
         path: ':postId',
         component: PostComponent,
         resolve: {
-          comments: () => loadedEntityResolver(CommentsService),
+          comments: postCommentsResolver,
         },
       },
     ],
