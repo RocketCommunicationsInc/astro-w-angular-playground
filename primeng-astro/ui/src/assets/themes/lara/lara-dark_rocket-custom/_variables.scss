@@ -18,7 +18,7 @@ $shade000:rgba(255,255,255,.87) !default;  //text color
 $shade100:rgba(255,255,255,.60) !default;  //text secondary color
 $shade500:#233752 !default;
 $shade600:#172635 !default;  //input bg, border, divider (color-background-surface-header)
-$shade700:#091a32 !default;  //menu bg
+$shade700:#1b2d3e !default;  //menu bg
 $shade800:#1b2d3e !default;  //elevated surface (color-background-surface-default)
 $shade900:#101923 !default;  //ground surface
 
@@ -591,8 +591,9 @@ $errorMessageTextColor:#ff5757 !default;
 $errorMessageIconColor:#ff5757 !default;
 
 //overlays
-$overlayContentBorder:1px solid $shade600 !default;
-$overlayContentBg:$panelContentBg !default;
+$overlayContentBorder:1px solid $primaryColor !default;
+$overlayContentBg:$shade900 !default;
+$overlayContentPadding: 4px;
 $overlayContainerShadow:0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0,0,0,.12) !default;
 
 //dialog
@@ -636,7 +637,7 @@ $progressBarValueTextColor:$primaryTextColor !default;
 //menu (e.g. menu, menubar, tieredmenu)
 $menuWidth:12.5rem !default;
 $menuBg:$shade700 !default;
-$menuBorder:1px solid $shade600 !default;
+$menuBorder:1px solid transparent !default;
 $menuTextColor:$shade000 !default;
 $menuitemPadding:.75rem 1.25rem !default;
 $menuitemBorderRadius:0 !default;
@@ -669,8 +670,8 @@ $menuSeparatorMargin:.25rem 0 !default;
 $breadcrumbPadding:1rem !default;
 $breadcrumbBg:$menuBg !default;
 $breadcrumbBorder:$menuBorder !default;
-$breadcrumbItemTextColor:$menuitemTextColor !default;
-$breadcrumbItemIconColor:$menuitemIconColor !default;
+$breadcrumbItemTextColor:$primaryColor !default;
+$breadcrumbItemIconColor:$primaryColor !default;
 $breadcrumbLastItemTextColor:$menuitemTextColor !default;
 $breadcrumbLastItemIconColor:$menuitemIconColor !default;
 $breadcrumbSeparatorColor:$menuitemTextColor !default;

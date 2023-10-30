@@ -2,6 +2,8 @@ import { map, withLatestFrom } from 'rxjs';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store, select } from '@ngrx/store';
+import { PanelModule } from 'primeng/panel';
+import { AccordionModule } from 'primeng/accordion';
 
 import { selectRouteParam } from 'src/app/route.state';
 import { CommentsService, PostsService } from '../services';
@@ -9,7 +11,7 @@ import { CommentsService, PostsService } from '../services';
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PanelModule, AccordionModule],
   templateUrl: './post.component.html',
   styles: [
     `

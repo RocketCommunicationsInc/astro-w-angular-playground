@@ -12,6 +12,9 @@ export const postsRoutes: Routes = [
     path: Path.posts,
     canActivateChild: [authGuard],
     resolve: { posts: () => loadedEntityResolver(PostsService) },
+    data: {
+      breadcrumb: 'Posts',
+    },
     children: [
       {
         path: '',
@@ -22,6 +25,9 @@ export const postsRoutes: Routes = [
         component: PostComponent,
         resolve: {
           comments: postCommentsResolver,
+        },
+        data: {
+          breadcrumb: 'Post',
         },
       },
     ],

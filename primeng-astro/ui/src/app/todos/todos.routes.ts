@@ -19,5 +19,8 @@ export const todosRoutes: Routes = [
         outlet: 'modal',
       },
     ],
+    data: {
+      breadcrumb: 'Todos',
+    },
   },
 ];

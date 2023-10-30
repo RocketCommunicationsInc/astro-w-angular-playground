@@ -13,6 +13,9 @@ export const dashboardRoutes: Routes = [
     path: Path.dashboard,
     component: DashboardComponent,
     canActivate: [authGuard],
+    data: {
+      breadcrumb: 'Home',
+    },
     resolve: [
       () => loadedEntityResolver(AlbumsService),
       () => loadedEntityResolver(PhotosService),

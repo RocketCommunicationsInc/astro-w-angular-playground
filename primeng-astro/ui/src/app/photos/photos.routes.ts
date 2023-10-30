@@ -11,5 +11,8 @@ export const photosRoutes: Routes = [
     canActivate: [authGuard],
     component: PhotosComponent,
     resolve: { photos: () => loadedEntityResolver(PhotosService) },
+    data: {
+      breadcrumb: 'Photos',
+    },
   },
 ];

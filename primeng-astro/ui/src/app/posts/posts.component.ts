@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PanelModule } from 'primeng/panel';
+import { ButtonModule } from 'primeng/button';
 
 import { PostsService } from './services';
 import { RouterLink } from '@angular/router';
@@ -8,7 +10,7 @@ import { Path } from '../shared';
 @Component({
   selector: 'app-posts',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, PanelModule, ButtonModule],
   templateUrl: './posts.component.html',
   styles: [
     `
