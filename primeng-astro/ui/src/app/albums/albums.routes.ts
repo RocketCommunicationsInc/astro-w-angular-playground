@@ -11,5 +11,8 @@ export const albumsRoutes: Routes = [
     canActivate: [authGuard],
     component: AlbumsComponent,
     resolve: { albums: () => loadedEntityResolver(AlbumsService) },
+    data: {
+      breadcrumb: 'Albums',
+    },
   },
 ];
