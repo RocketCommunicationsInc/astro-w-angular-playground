@@ -81,9 +81,11 @@ export class AppComponent implements OnInit {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        return (this.menuItems = this.createBreadcrumbs(
-          this.activatedRoute.root,
-        ));
+        this.menuItems = this.createBreadcrumbs(this.activatedRoute.root);
+
+        // set the last breadcrumb to not be a link
+        this.menuItems![this.menuItems!.length - 1].url = undefined;
+        return this.menuItems;
       });
   }
 }
