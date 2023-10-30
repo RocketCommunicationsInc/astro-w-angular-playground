@@ -43,7 +43,6 @@ export class AppComponent implements OnInit {
     breadcrumbs: MenuItem[] = [],
   ): any {
     const children: ActivatedRoute[] = route.children;
-    console.log('children', children);
 
     if (children.length === 0) {
       return breadcrumbs;
@@ -53,16 +52,14 @@ export class AppComponent implements OnInit {
       const routeURL: string = child.snapshot.url
         .map((segment) => segment.path)
         .join('/');
-      if (routeURL !== '') {
+      if (routeURL !== '' || undefined) {
         url += `/${routeURL}`;
-      }
-      console.log(child);
 
-      const label = child.snapshot.data['breadcrumb'];
-      if (label) {
-        breadcrumbs.push({ label, url });
+        const label = child.snapshot.data['breadcrumb'];
+        if (label) {
+          breadcrumbs.push({ label, url });
+        }
       }
-      console.log('label', label);
 
       return this.createBreadcrumbs(child, url, breadcrumbs);
     }
@@ -80,6 +77,7 @@ export class AppComponent implements OnInit {
     if (userProfile) {
       this.store.dispatch(login({ payload: JSON.parse(userProfile) }));
     }
+
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
