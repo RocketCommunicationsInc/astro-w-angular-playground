@@ -1,24 +1,24 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { TabViewModule } from 'primeng/tabview';
 import { PanelModule } from 'primeng/panel';
+
+import { TodosComponent } from '../todos/todos.component';
+import { AlbumsPhotosComponent } from './albums-photos/albums-photos.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, ButtonModule, CardModule, TabViewModule, PanelModule],
-  templateUrl: './dashboard.component.html',
-  styles: [
-    `
-      :host {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        overflow: auto;
-      }
-    `,
+  imports: [
+    CommonModule,
+    ButtonModule,
+    PanelModule,
+    RouterLink,
+    AlbumsPhotosComponent,
+    TodosComponent,
   ],
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {}

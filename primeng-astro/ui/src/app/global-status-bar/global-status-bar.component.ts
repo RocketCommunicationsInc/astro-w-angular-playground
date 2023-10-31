@@ -19,7 +19,14 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     OverlayPanelModule,
   ],
   templateUrl: './global-status-bar.component.html',
-  styleUrls: ['./global-status-bar.component.css'],
+  styles: [
+    `
+      h1,
+      h2 {
+        margin: 0;
+      }
+    `,
+  ],
 })
 export class GlobalStatusBarComponent {
   user$ = this.store.pipe(select(selectUserState));
