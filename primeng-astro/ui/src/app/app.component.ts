@@ -3,28 +3,16 @@ import { CommonModule } from '@angular/common';
 import {
   ActivatedRoute,
   NavigationEnd,
-  Params,
   Router,
   RouterOutlet,
 } from '@angular/router';
-import {
-  Store,
-  select,
-  DefaultProjectorFn,
-  MemoizedSelector,
-} from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 import { AppState } from './app.state';
 import { login } from './auth/state';
 import { SideNavComponent } from './side-nav/side-nav.component';
-import {
-  selectCurrentRoute,
-  selectRouteData,
-  selectRouteDataParam,
-  selectRouteParam,
-  selectUrl,
-} from './route.state';
+import { selectActivatedRouteSnapshotRoot, selectUrl } from './route.state';
 import { Path } from './shared';
 import { GlobalStatusBarComponent } from './global-status-bar/global-status-bar.component';
 import { filter } from 'rxjs';
@@ -45,34 +33,36 @@ import { MenuItem } from 'primeng/api';
 })
 export class AppComponent implements OnInit {
   url$ = this.store.pipe(select(selectUrl));
-  routes: any;
-  routes$ = this.store.select(selectCurrentRoute).subscribe((result) => {
-    console.log(result);
-    return (this.routes = result);
-  });
+  root: any;
+  activatedRoute$ = this.store
+    .select(selectActivatedRouteSnapshotRoot)
+    .subscribe((result) => {
+      console.log(result);
+      return (this.root = result);
+    });
   login = '/' + Path.login;
   menuItems: MenuItem[] | undefined;
   home: MenuItem = { routerLink: '/', icon: 'pi pi-home' };
 
   private createBreadcrumbs(
-    route: ActivatedRoute,
+    route: { children: any },
     routerLink: string = '',
     breadcrumbs: MenuItem[] = [],
   ): any {
-    const children: ActivatedRoute[] = route.children;
+    const children: any = route.children;
 
     if (children.length === 0) {
       return breadcrumbs;
     }
 
     for (const child of children) {
-      const routeURL: string = child.snapshot.url
-        .map((segment) => segment.path)
+      const routeURL: string = child.url
+        .map((segment: { path: 'string' }) => segment.path)
         .join('/');
       if (routeURL !== '' || undefined) {
         routerLink += `/${routeURL}`;
 
-        const label = child.snapshot.data['breadcrumb'];
+        const label = child.data['breadcrumb'];
         if (label) {
           breadcrumbs.push({ label, routerLink });
         }
@@ -82,11 +72,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  constructor(
-    private store: Store<AppState>,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-  ) {}
+  constructor(private store: Store<AppState>, private router: Router) {}
 
   ngOnInit(): void {
     const userProfile = localStorage.getItem('user');
@@ -98,8 +84,7 @@ export class AppComponent implements OnInit {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.menuItems = this.createBreadcrumbs(this.activatedRoute.root);
-
+        this.menuItems = this.createBreadcrumbs(this.root);
         // set the last breadcrumb to not be a link
         this.menuItems![this.menuItems!.length - 1].routerLink = undefined;
         return this.menuItems;
