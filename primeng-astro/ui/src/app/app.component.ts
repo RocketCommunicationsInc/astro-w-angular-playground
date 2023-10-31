@@ -3,16 +3,28 @@ import { CommonModule } from '@angular/common';
 import {
   ActivatedRoute,
   NavigationEnd,
+  Params,
   Router,
   RouterOutlet,
 } from '@angular/router';
-import { Store, select } from '@ngrx/store';
+import {
+  Store,
+  select,
+  DefaultProjectorFn,
+  MemoizedSelector,
+} from '@ngrx/store';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 import { AppState } from './app.state';
 import { login } from './auth/state';
 import { SideNavComponent } from './side-nav/side-nav.component';
-import { selectUrl } from './route.state';
+import {
+  selectCurrentRoute,
+  selectRouteData,
+  selectRouteDataParam,
+  selectRouteParam,
+  selectUrl,
+} from './route.state';
 import { Path } from './shared';
 import { GlobalStatusBarComponent } from './global-status-bar/global-status-bar.component';
 import { filter } from 'rxjs';
@@ -33,13 +45,18 @@ import { MenuItem } from 'primeng/api';
 })
 export class AppComponent implements OnInit {
   url$ = this.store.pipe(select(selectUrl));
+  routes: any;
+  routes$ = this.store.select(selectCurrentRoute).subscribe((result) => {
+    console.log(result);
+    return (this.routes = result);
+  });
   login = '/' + Path.login;
   menuItems: MenuItem[] | undefined;
   home: MenuItem = { routerLink: '/', icon: 'pi pi-home' };
 
   private createBreadcrumbs(
     route: ActivatedRoute,
-    url: string = '',
+    routerLink: string = '',
     breadcrumbs: MenuItem[] = [],
   ): any {
     const children: ActivatedRoute[] = route.children;
@@ -53,15 +70,15 @@ export class AppComponent implements OnInit {
         .map((segment) => segment.path)
         .join('/');
       if (routeURL !== '' || undefined) {
-        url += `/${routeURL}`;
+        routerLink += `/${routeURL}`;
 
         const label = child.snapshot.data['breadcrumb'];
         if (label) {
-          breadcrumbs.push({ label, url });
+          breadcrumbs.push({ label, routerLink });
         }
       }
 
-      return this.createBreadcrumbs(child, url, breadcrumbs);
+      return this.createBreadcrumbs(child, routerLink, breadcrumbs);
     }
   }
 
@@ -84,7 +101,7 @@ export class AppComponent implements OnInit {
         this.menuItems = this.createBreadcrumbs(this.activatedRoute.root);
 
         // set the last breadcrumb to not be a link
-        this.menuItems![this.menuItems!.length - 1].url = undefined;
+        this.menuItems![this.menuItems!.length - 1].routerLink = undefined;
         return this.menuItems;
       });
   }
