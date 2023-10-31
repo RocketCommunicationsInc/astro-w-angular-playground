@@ -1,10 +1,8 @@
-<h2>Posts</h2>
-<ng-container *ngIf="posts$ | async as posts">
-  <p-panel *ngFor="let post of posts">
-    <ng-template pTemplate="header">{{ post.title }}</ng-template>
+<p-panel *ngIf="posts$ | async as posts" header="Posts">
+  <p-card styleClass="mb-3" *ngFor="let post of posts" header={{post.title}}>
     {{ post.body }}
     <ng-template pTemplate="footer">
-      <p-button [link]="true" [routerLink]="postsPath + '/' + post.id">Details</p-button>
+      <p-button [routerLink]="postsPath + '/' + post.id">Details</p-button>
     </ng-template>
-  </p-panel>
-</ng-container>
+  </p-card>
+</p-panel>

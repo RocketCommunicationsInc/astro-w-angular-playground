@@ -37,7 +37,6 @@ export class AppComponent implements OnInit {
   activatedRoute$ = this.store
     .select(selectActivatedRouteSnapshotRoot)
     .subscribe((result) => {
-      console.log(result);
       return (this.root = result);
     });
   login = '/' + Path.login;
