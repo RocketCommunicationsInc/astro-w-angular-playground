@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Store, select } from '@ngrx/store';
 import { PanelModule } from 'primeng/panel';
 import { AccordionModule } from 'primeng/accordion';
+import { DividerModule } from 'primeng/divider';
 
 import { selectRouteParam } from 'src/app/route.state';
 import { CommentsService, PostsService } from '../services';
@@ -11,7 +12,7 @@ import { CommentsService, PostsService } from '../services';
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [CommonModule, PanelModule, AccordionModule],
+  imports: [CommonModule, PanelModule, AccordionModule, DividerModule],
   templateUrl: './post.component.html',
   styles: [
     `
