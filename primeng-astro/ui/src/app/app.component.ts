@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
     });
   login = '/' + Path.login;
   menuItems: MenuItem[] | undefined;
-  home: MenuItem = { routerLink: '/', icon: 'pi pi-home' };
+  home: MenuItem = { routerLink: '/' + Path.dashboard, icon: 'pi pi-home' };
 
   private createBreadcrumbs(
     route: { children: any },

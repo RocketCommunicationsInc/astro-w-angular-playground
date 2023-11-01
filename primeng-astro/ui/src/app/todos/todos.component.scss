@@ -1,0 +1,28 @@
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  .p-element,
+  ::ng-deep .p-panel {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .p-toggleable-content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+
+      .p-panel-content {
+        flex-grow: 1;
+      }
+    }
+  }
+}
+
+.p-inputtext {
+  border: none;
+}

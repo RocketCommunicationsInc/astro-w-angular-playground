@@ -3,7 +3,6 @@
 @import 'primeflex/primeflex.scss';
 @import 'primeicons/primeicons.css';
 @import './assets/themes/lara/lara-dark_rocket-custom/blue/theme.scss';
-/* @import './assets/themes/mytheme/theme.scss'; */
 
 body,
 h1,
@@ -16,6 +15,7 @@ p {
   margin: 0;
 }
 
-h1, h2 {
+h1,
+h2 {
   margin-block: 12px;
 }

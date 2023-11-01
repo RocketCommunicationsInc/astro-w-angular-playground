@@ -30,20 +30,7 @@ import { Todo } from './todos.model';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './todos.component.html',
-  styles: [
-    `
-      :host {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        overflow: auto;
-      }
-
-      .p-inputtext {
-        border: none;
-      }
-    `,
-  ],
+  styleUrls: ['./todos.component.scss'],
 })
 export class TodosComponent {
   updatedTitle = '';
