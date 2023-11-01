@@ -1,0 +1,9 @@
+/**
+* In order to make the panels within each tabPanel assume a
+* height to fill the space, the tab not displayed needs to be
+* visually hidden from the dom (future effort)
+*/
+::ng-deep .p-tabview-panels {
+  height: calc(100vh - 13.8125rem);
+  padding: 0;
+}

@@ -1,13 +1,10 @@
+import { filter } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  Router,
-  RouterOutlet,
-} from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { MenuItem } from 'primeng/api';
 
 import { AppState } from './app.state';
 import { login } from './auth/state';
@@ -15,8 +12,6 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { selectActivatedRouteSnapshotRoot, selectUrl } from './route.state';
 import { Path } from './shared';
 import { GlobalStatusBarComponent } from './global-status-bar/global-status-bar.component';
-import { filter } from 'rxjs';
-import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -41,7 +36,7 @@ export class AppComponent implements OnInit {
     });
   login = '/' + Path.login;
   menuItems: MenuItem[] | undefined;
-  home: MenuItem = { routerLink: '/', icon: 'pi pi-home' };
+  home: MenuItem = { routerLink: '/' + Path.dashboard, icon: 'pi pi-home' };
 
   private createBreadcrumbs(
     route: { children: any },
@@ -81,8 +76,9 @@ export class AppComponent implements OnInit {
     }
 
     this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe(() => {
+      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+      .subscribe(({ url }) => {
+        if (url === this.login) return;
         this.menuItems = this.createBreadcrumbs(this.root);
         // set the last breadcrumb to not be a link
         this.menuItems![this.menuItems!.length - 1].routerLink = undefined;

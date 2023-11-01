@@ -7,6 +7,7 @@ import { AlbumsService } from '../albums/albums.service';
 import { PhotosService } from '../photos/photos.service';
 import { PostsService } from '../posts/services';
 import { TodosService } from '../todos/todos.service';
+import { CreateTodoComponent } from '../todos/create-todo/create-todo.component';
 
 export const dashboardRoutes: Routes = [
   {
@@ -14,8 +15,15 @@ export const dashboardRoutes: Routes = [
     component: DashboardComponent,
     canActivate: [authGuard],
     data: {
-      breadcrumb: 'Home',
+      breadcrumb: 'Dashboard',
     },
+    children: [
+      {
+        path: 'add-todo',
+        component: CreateTodoComponent,
+        outlet: 'modal',
+      },
+    ],
     resolve: [
       () => loadedEntityResolver(AlbumsService),
       () => loadedEntityResolver(PhotosService),
