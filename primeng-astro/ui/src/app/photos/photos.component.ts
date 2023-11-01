@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PanelModule } from 'primeng/panel';
+import { CardModule } from 'primeng/card';
 import { PhotosService } from './photos.service';
 
 @Component({
   selector: 'app-photos',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PanelModule, CardModule],
   templateUrl: './photos.component.html',
   styles: [
     `

@@ -1,2 +1,13 @@
-<h3>Photos</h3>
-<pre *ngIf="photos$ | async as photos">{{ photos | json }}</pre>
+<!-- <h3>Photos</h3>-->
+<!-- <pre *ngIf="photos$ | async as photos">{{ photos | json }}</pre> -->
+
+<p-panel *ngIf="photos$ | async as photos" header="Photos">
+    <div class="flex flex-wrap">
+        <p-card styleClass="m-3" *ngFor="let photo of photos" [header]="photo.title" [style]="{ width: '300px' }">
+            <ng-template pTemplate="header">
+                <img [alt]="photo.title" [src]="photo.url" />
+            </ng-template>
+        </p-card>
+    </div>
+    
+</p-panel>
