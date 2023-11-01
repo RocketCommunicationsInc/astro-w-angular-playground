@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { DataViewModule } from 'primeng/dataview';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
+import { SkeletonModule } from 'primeng/skeleton';
 
 import { selectUserState } from '../auth/state';
 import { TodosService } from './todos.service';
@@ -25,6 +26,7 @@ import { Todo } from './todos.model';
     InputTextModule,
     CheckboxModule,
     FormsModule,
+    SkeletonModule,
     RouterLink,
     RouterOutlet,
   ],
@@ -36,6 +38,8 @@ export class TodosComponent {
   updatedTitle = '';
   user$ = this.store.pipe(select(selectUserState));
   todos$ = this.todosService.filteredEntities$;
+  loading$ = this.todosService.loading$;
+  skeletons = Array(16).fill(16);
 
   completedTodosIds$ = this.todosService.entities$.pipe(
     map((todos) => {

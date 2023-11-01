@@ -1,4 +1,18 @@
 <p-panel *ngIf="user$ | async as user">
+  <div *ngIf="loading$ | async as loading">
+    <div
+      *ngFor="let skeleton of skeletons"
+      class="border-round border-1 surface-border p-3 surface-card mb-1 flex"
+    >
+      <p-skeleton size="2rem" styleClass="mr-2"></p-skeleton>
+      <p-skeleton width="35rem" height="2rem"></p-skeleton>
+
+      <div class="flex flex-row justify-content-between ml-auto">
+        <p-skeleton size="2rem" styleClass="mx-2"></p-skeleton>
+        <p-skeleton size="2rem" styleClass="mr-2"></p-skeleton>
+      </div>
+    </div>
+  </div>
   <ng-template pTemplate="header">
     <div class="flex-grow-1 flex align-items-center justify-content-between">
       <div class="flex align-items-center gap-3">
