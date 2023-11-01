@@ -1,13 +1,10 @@
+import { filter } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  Router,
-  RouterOutlet,
-} from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { MenuItem } from 'primeng/api';
 
 import { AppState } from './app.state';
 import { login } from './auth/state';
@@ -15,8 +12,6 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { selectActivatedRouteSnapshotRoot, selectUrl } from './route.state';
 import { Path } from './shared';
 import { GlobalStatusBarComponent } from './global-status-bar/global-status-bar.component';
-import { filter } from 'rxjs';
-import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
