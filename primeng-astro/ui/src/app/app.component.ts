@@ -76,8 +76,9 @@ export class AppComponent implements OnInit {
     }
 
     this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe(() => {
+      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+      .subscribe(({ url }) => {
+        if (url === this.login) return;
         this.menuItems = this.createBreadcrumbs(this.root);
         // set the last breadcrumb to not be a link
         this.menuItems![this.menuItems!.length - 1].routerLink = undefined;
