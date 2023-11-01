@@ -1,20 +1,11 @@
-<h2>Post</h2>
-<p-panel *ngIf="post$ | async as post">
-  <ng-template pTemplate="header">
-    {{ post.title }}
-  </ng-template>
+<p-panel *ngIf="post$ | async as post" [header]="post.title">
   {{ post.body }}
-</p-panel>
-<!-- <pre *ngIf="post$ | async as post">{{ post | json }}</pre> -->
-
-<h2>Comments</h2>
-<p-accordion [activeIndex]="0" *ngIf="comments$ | async as comments">
-    <p-accordionTab header="{{ comment.id }}" *ngFor="let comment of comments">
-        <p>Name: {{ comment.name }}</p>
-        <p>
-            Comment: {{ comment.body }}
-        </p>
-        <p>Email: {{ comment.email }}</p>
+  <p-divider styleClass="py-3" />
+  <h3 class="pb-3">Comments</h3>
+  <p-accordion [activeIndex]="0" *ngIf="comments$ | async as comments">
+    <p-accordionTab [header]="comment.name" *ngFor="let comment of comments">
+      <p><strong>Comment: </strong> {{ comment.body }}</p>
+      <p><strong>Email: </strong> {{ comment.email }}</p>
     </p-accordionTab>
-</p-accordion>
-<!-- <pre *ngIf="comments$ | async as comments">{{ comments | json }}</pre> -->
+  </p-accordion>
+</p-panel>
