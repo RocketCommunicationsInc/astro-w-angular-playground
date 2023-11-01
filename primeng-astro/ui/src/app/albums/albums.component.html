@@ -1,2 +1,5 @@
-<h3>Albums</h3>
-<pre *ngIf="albums$ | async as albums">{{ albums | json }}</pre>
+<p-panel *ngIf="albums$ | async as albums" header="Albums">
+    <p-card styleClass="mb-3" *ngFor="let album of albums" header={{album.title}}>
+        {{album.id}}
+    </p-card>
+</p-panel>
