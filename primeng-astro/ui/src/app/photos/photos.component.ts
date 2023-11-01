@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { PanelModule } from 'primeng/panel';
 import { CardModule } from 'primeng/card';
 import { PhotosService } from './photos.service';
+import { SkeletonModule } from 'primeng/skeleton';
 
 @Component({
   selector: 'app-photos',
   standalone: true,
-  imports: [CommonModule, PanelModule, CardModule],
+  imports: [CommonModule, PanelModule, CardModule, SkeletonModule],
   templateUrl: './photos.component.html',
   styles: [
     `
@@ -22,6 +23,8 @@ import { PhotosService } from './photos.service';
 })
 export class PhotosComponent {
   photos$ = this.photosService.entities$;
+  loading$ = this.photosService.loading$;
+  skeletons = Array(16).fill(5);
 
   constructor(private photosService: PhotosService) {}
 }

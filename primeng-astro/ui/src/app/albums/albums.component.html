@@ -1,4 +1,21 @@
 <p-panel *ngIf="albums$ | async as albums" header="Albums">
+    <div *ngIf="loading$ | async as loading">
+        <div
+          *ngFor="let skeleton of skeletons"
+          class="border-round border-1 surface-border p-4 surface-card mb-3"
+        >
+          <div class="flex mb-2">
+            <div>
+              <p-skeleton
+                width="15rem"
+                height="2rem"
+                styleClass="mb-2"
+              ></p-skeleton>
+            </div>
+          </div>
+          <p-skeleton width="100%" height="30px"></p-skeleton>
+        </div>
+      </div>
     <p-card styleClass="mb-3" *ngFor="let album of albums" [header]="album.title">
         {{album.id}}
     </p-card>

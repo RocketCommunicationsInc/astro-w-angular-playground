@@ -5,6 +5,7 @@ import { Store, select } from '@ngrx/store';
 import { PanelModule } from 'primeng/panel';
 import { AccordionModule } from 'primeng/accordion';
 import { DividerModule } from 'primeng/divider';
+import { SkeletonModule } from 'primeng/skeleton';
 
 import { selectRouteParam } from 'src/app/route.state';
 import { CommentsService, PostsService } from '../services';
@@ -12,7 +13,13 @@ import { CommentsService, PostsService } from '../services';
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [CommonModule, PanelModule, AccordionModule, DividerModule],
+  imports: [
+    CommonModule,
+    PanelModule,
+    AccordionModule,
+    DividerModule,
+    SkeletonModule,
+  ],
   templateUrl: './post.component.html',
   styles: [
     `
@@ -32,6 +39,8 @@ export class PostComponent {
     withLatestFrom(this.postId$),
     map(([postsMap, postId]) => postsMap[postId || '']),
   );
+  loading$ = this.commentsService.loading$;
+  skeletons = Array(4).fill(5);
 
   constructor(
     private postsService: PostsService,

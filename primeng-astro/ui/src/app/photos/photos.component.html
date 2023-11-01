@@ -2,12 +2,27 @@
 <!-- <pre *ngIf="photos$ | async as photos">{{ photos | json }}</pre> -->
 
 <p-panel *ngIf="photos$ | async as photos" header="Photos">
-    <div class="flex flex-wrap">
-        <p-card styleClass="m-3" *ngFor="let photo of photos" [header]="photo.title" [style]="{ width: '300px' }">
-            <ng-template pTemplate="header">
-                <img [alt]="photo.title" [src]="photo.url" />
-            </ng-template>
-        </p-card>
-    </div>
-    
+    <div *ngIf="loading$ | async as loading" class="flex flex-wrap">
+        <div
+          *ngFor="let skeleton of skeletons"
+          class="border-round border-1 surface-border p-4 surface-card mb-4 mr-4"
+          [style]="{ width: '300px' }"
+        >
+          <p-skeleton width="100%" height="200px" styleClass="mb-3"></p-skeleton>
+          <p-skeleton width="100%" height="20px" styleClass="mb-3"></p-skeleton>
+          <p-skeleton width="100%" height="20px"></p-skeleton>
+        </div>
+      </div>
+  <div class="flex flex-wrap">
+    <p-card
+      styleClass="m-3"
+      *ngFor="let photo of photos"
+      [header]="photo.title"
+      [style]="{ width: '300px' }"
+    >
+      <ng-template pTemplate="header">
+        <img [alt]="photo.title" [src]="photo.url" />
+      </ng-template>
+    </p-card>
+  </div>
 </p-panel>
