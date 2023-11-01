@@ -35,6 +35,8 @@ import { Path } from '../shared';
 })
 export class PostsComponent {
   posts$ = this.postsService.entities$;
+  loading$ = this.postsService.loading$;
+  skeletons = Array(8).fill(8);
   postsPath = '/' + Path.posts;
 
   constructor(private postsService: PostsService) {}

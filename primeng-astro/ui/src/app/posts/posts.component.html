@@ -1,4 +1,24 @@
 <p-panel *ngIf="posts$ | async as posts" header="Posts">
+  <div *ngIf="loading$ | async as loading">
+    <div
+      *ngFor="let skeleton of skeletons"
+      class="border-round border-1 surface-border p-4 surface-card mb-3"
+    >
+      <div class="flex mb-2">
+        <div>
+          <p-skeleton
+            width="15rem"
+            height="2rem"
+            styleClass="mb-2"
+          ></p-skeleton>
+        </div>
+      </div>
+      <p-skeleton width="100%" height="100px"></p-skeleton>
+      <div class="flex justify-content-between mt-3">
+        <p-skeleton width="5rem" height="2rem"></p-skeleton>
+      </div>
+    </div>
+  </div>
   <p-card styleClass="mb-3" *ngFor="let post of posts" [header]="post.title">
     {{ post.body }}
     <ng-template pTemplate="footer">
@@ -6,8 +26,3 @@
     </ng-template>
   </p-card>
 </p-panel>
-
-<ng-template #loading>
-  <p-skeleton height="2rem" styleClass="mb-2"></p-skeleton>
-</ng-template>
-<p-skeleton height="2rem" styleClass="mb-2"></p-skeleton>
