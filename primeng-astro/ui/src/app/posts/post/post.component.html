@@ -1,9 +1,9 @@
-<p-panel *ngIf="post$ | async as post" header="{{ post.title }}">
+<p-panel *ngIf="post$ | async as post" [header]="post.title">
   {{ post.body }}
   <p-divider styleClass="py-3" />
   <h3 class="pb-3">Comments</h3>
   <p-accordion [activeIndex]="0" *ngIf="comments$ | async as comments">
-    <p-accordionTab header="{{ comment.name }}" *ngFor="let comment of comments">
+    <p-accordionTab [header]="comment.name" *ngFor="let comment of comments">
       <p><strong>Comment: </strong> {{ comment.body }}</p>
       <p><strong>Email: </strong> {{ comment.email }}</p>
     </p-accordionTab>
