@@ -1,4 +1,20 @@
 <p-panel *ngIf="posts$ | async as posts" header="Posts">
+  <div *ngIf="loading$ | async as loading">
+    <div
+      *ngFor="let skeleton of skeletons"
+      class="border-round border-1 surface-border p-4 surface-card mb-3"
+    >
+      <div class="flex mb-2">
+          <p-skeleton
+            width="15rem"
+            height="2rem"
+            styleClass="mb-2"
+          ></p-skeleton>
+      </div>
+      <p-skeleton width="100%" height="6.25rem"></p-skeleton>
+      <p-skeleton styleClass="mt-3" width="5rem" height="2rem"></p-skeleton>
+    </div>
+  </div>
   <p-card styleClass="mb-3" *ngFor="let post of posts" [header]="post.title">
     {{ post.body }}
     <ng-template pTemplate="footer">

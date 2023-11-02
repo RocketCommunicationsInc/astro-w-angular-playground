@@ -1,2 +1,23 @@
-<h3>Photos</h3>
-<pre *ngIf="photos$ | async as photos">{{ photos | json }}</pre>
+<p-panel *ngIf="photos$ | async as photos" header="Photos">
+  <div *ngIf="loading$ | async as loading" class="flex flex-wrap">
+    <div
+      *ngFor="let skeleton of skeletons"
+      class="border-round border-1 surface-border p-4 surface-card mb-4 mr-4 w-19rem"
+    >
+      <p-skeleton width="100%" height="12.5rem" styleClass="mb-3"></p-skeleton>
+      <p-skeleton width="100%" height="1.5rem" styleClass="mb-3"></p-skeleton>
+      <p-skeleton width="100%" height="1.5rem"></p-skeleton>
+    </div>
+  </div>
+  <div class="flex flex-wrap">
+    <p-card
+      styleClass="m-3 w-19rem"
+      *ngFor="let photo of photos"
+      [header]="photo.title"
+    >
+      <ng-template pTemplate="header">
+        <img [alt]="photo.title" [src]="photo.url" />
+      </ng-template>
+    </p-card>
+  </div>
+</p-panel>
