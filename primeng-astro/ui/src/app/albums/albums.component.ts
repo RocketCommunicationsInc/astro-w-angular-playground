@@ -26,7 +26,7 @@ import { AlbumsService } from './albums.service';
 export class AlbumsComponent {
   albums$ = this.albumsService.entities$;
   loading$ = this.albumsService.loading$;
-  skeletons = Array(8).fill(5);
+  skeletons = Array(2).fill(2);
 
   constructor(private albumsService: AlbumsService) {}
 }

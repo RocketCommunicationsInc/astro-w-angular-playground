@@ -40,7 +40,7 @@ export class PostComponent {
     map(([postsMap, postId]) => postsMap[postId || '']),
   );
   loading$ = this.commentsService.loading$;
-  skeletons = Array(4).fill(5);
+  skeletons = Array(2).fill(2);
 
   constructor(
     private postsService: PostsService,

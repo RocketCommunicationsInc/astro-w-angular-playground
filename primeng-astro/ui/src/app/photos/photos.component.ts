@@ -24,7 +24,7 @@ import { SkeletonModule } from 'primeng/skeleton';
 export class PhotosComponent {
   photos$ = this.photosService.entities$;
   loading$ = this.photosService.loading$;
-  skeletons = Array(16).fill(5);
+  skeletons = Array(2).fill(2);
 
   constructor(private photosService: PhotosService) {}
 }

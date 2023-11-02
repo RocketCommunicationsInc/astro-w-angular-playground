@@ -39,7 +39,7 @@ export class TodosComponent {
   user$ = this.store.pipe(select(selectUserState));
   todos$ = this.todosService.filteredEntities$;
   loading$ = this.todosService.loading$;
-  skeletons = Array(16).fill(16);
+  skeletons = Array(2).fill(2);
 
   completedTodosIds$ = this.todosService.entities$.pipe(
     map((todos) => {
